@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
-import 'package:offpeak/views/restaurantItem.dart';
+import 'package:offpeak/pages/restaurantItem.dart';
 
 class Restaurants extends StatefulWidget {
   @override
@@ -24,10 +25,12 @@ class _RestaurantsState extends State<Restaurants> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text( "Reataurants",
                   style: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal*10,
+                    fontSize: SizeConfig.blockSizeHorizontal*9 ,
                     fontWeight: FontWeight.bold,
                   )
             ),

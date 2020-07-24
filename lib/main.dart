@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offpeak/utils/size_config.dart';
-import 'package:offpeak/views/restaurasnts.dart';
+import 'package:offpeak/pages/restaurasnts.dart';
 
 void main() {
   runApp(MyApp());
