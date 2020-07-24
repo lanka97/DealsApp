@@ -53,7 +53,7 @@ class _Reservation extends State<Reservation> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 20.0, vertical: SizeConfig.blockSizeVertical * 5.0),
+                padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 20.0, vertical: SizeConfig.blockSizeVertical * 4.0),
                 child: Card(
                   color: Colors.white,
                   shadowColor: Colors.transparent,
@@ -352,7 +352,7 @@ class _Reservation extends State<Reservation> {
                   ),
                 ),
               ),
-              SizedBox(height: SizeConfig.screenHeight * 0.08),
+              SizedBox(height: SizeConfig.screenHeight * 0.05),
               Container(
                 height: SizeConfig.screenHeight * 0.075,
                 child: FlatButton(
