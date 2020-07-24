@@ -14,11 +14,10 @@ class _RestaurantItemState extends State<RestaurantItem> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.height;
 
     return Card(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(children: [
             ClipRRect(
@@ -57,42 +56,68 @@ class _RestaurantItemState extends State<RestaurantItem> {
             ),
           ]),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text( "Ammage Reataurant EKa",
-                    style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal*5.5 ,
-                      fontWeight: FontWeight.bold,
-                    )
+                Expanded(
+                  flex: 4,
+                  child: Text( "Ammage Reataurant EKaaa",
+                      style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal*5.5 ,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.star,
-                      size: SizeConfig.screenWidth*0.05,
-                      color: Colors.red,
-                    ),
-                    Text( "5.0",
-                        style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal*4 ,
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.star,
+                        size: SizeConfig.screenWidth*0.05,
+                        color: Colors.red,
+                      ),
+                      Text( "5.0",
+                          style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal*4 ,
 //                          fontWeight: FontWeight.bold,
-                        )
-                    ),
-                    Text( "(40)",
-                        style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal*4 ,
-                          color: Colors.black45,
+                          )
+                      ),
+                      Text( "(40)",
+                          style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal*4 ,
+                            color: Colors.black45,
 //                          fontWeight: FontWeight.bold,
-                        )
-                    ),
-                  ],
+                          )
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+            child: Text( "Colombo One - Rs 10000 for 2",
+              style: TextStyle(
+                fontSize: SizeConfig.blockSizeHorizontal*4.25,
+                color: Colors.black45,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+            child: Text( "Thai - Chinese - Italian",
+              style: TextStyle(
+                fontSize: SizeConfig.blockSizeHorizontal*4.25,
+                color: Colors.black45,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ],
       ),
     );
