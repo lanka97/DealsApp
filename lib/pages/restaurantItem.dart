@@ -14,7 +14,6 @@ class _RestaurantItemState extends State<RestaurantItem> {
 
   @override
   Widget build(BuildContext context) {
-
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,44 +54,44 @@ class _RestaurantItemState extends State<RestaurantItem> {
               ),
             ),
           ]),
+          _buildList(),
           Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  flex: 4,
-                  child: Text( "Ammage Reataurant EKaaa",
-                      style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal*5.5 ,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  flex: 3,
+                  child: Text(
+                    "Ammage Reataurant EKaaa",
+                    style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.5,
+                      fontWeight: FontWeight.bold,
+                    ),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Icon(
                         Icons.star,
-                        size: SizeConfig.screenWidth*0.05,
+                        size: SizeConfig.screenWidth * 0.05,
                         color: Colors.red,
                       ),
-                      Text( "5.0",
+                      Text("5.0",
                           style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal*4 ,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
 //                          fontWeight: FontWeight.bold,
-                          )
-                      ),
-                      Text( "(40)",
+                          )),
+                      Text("(40)",
                           style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal*4 ,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                             color: Colors.black45,
 //                          fontWeight: FontWeight.bold,
-                          )
-                      ),
+                          )),
                     ],
                   ),
                 )
@@ -101,24 +100,89 @@ class _RestaurantItemState extends State<RestaurantItem> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Text( "Colombo One - Rs 10000 for 2",
+            child: Text(
+              "Colombo One - Rs 10000 for 2",
               style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal*4.25,
+                fontSize: SizeConfig.blockSizeHorizontal * 4.25,
                 color: Colors.black45,
               ),
               overflow: TextOverflow.ellipsis,
             ),
-          ),Padding(
+          ),
+          Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-            child: Text( "Thai - Chinese - Italian",
+            child: Text(
+              "Thai - Chinese - Italian",
               style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal*4.25,
+                fontSize: SizeConfig.blockSizeHorizontal * 4.25,
                 color: Colors.black45,
               ),
               overflow: TextOverflow.ellipsis,
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildList() {
+//    if (false)
+//      return Center(
+//        child: Column(
+//          mainAxisSize: MainAxisSize.min,
+//          children: <Widget>[
+//            Icon(Icons.local_movies),
+//            Text(
+//              "We cannot find any movies",
+//              style: Theme.of(context).textTheme.headline6,
+//            ),
+//          ],
+//        ),
+//      );
+//    return Padding(
+//      padding: const EdgeInsets.all(8.0),
+//      child: Container(
+//        height: SizeConfig.screenHeight*0.05,
+//        width: SizeConfig.screenWidth*0.98,
+//        child: ListView.builder(
+//            scrollDirection: Axis.horizontal,
+//            itemCount: 5,
+//            itemBuilder: (context, index) {
+//              return Container(
+//                child: Text("ffff"),
+//                decoration: BoxDecoration(
+//                  borderRadius: BorderRadius.circular(100),
+//                  color: Colors.red,
+//                ),
+//              );
+//        }),
+//      ),
+//    );
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: SizeConfig.screenWidth * 0.15,
+        width: SizeConfig.screenWidth * 0.15,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: Colors.red,
+        ),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("10.30",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: SizeConfig.blockSizeHorizontal * 3)),
+            Text("20%",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                    fontWeight: FontWeight.bold))
+          ],
+        )),
       ),
     );
   }

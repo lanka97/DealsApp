@@ -21,24 +21,47 @@ class _RestaurantsState extends State<Restaurants> {
     restaurant.add(res);
     restaurant.add(res);
 
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text( "Reataurants",
-                  style: TextStyle(
-                    fontSize: SizeConfig.blockSizeHorizontal*9 ,
-                    fontWeight: FontWeight.bold,
-                  )
+    return Scaffold(
+//        appBar: AppBar(
+//          elevation: 0.0,
+//          backgroundColor: Colors.white,
+////          leading: IconButton(
+////            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+////            onPressed: () => Navigator.of(context).pop(),
+////          ),
+//          title: Text(
+//              "",
+//              style: TextStyle(
+//                fontWeight: FontWeight.bold,
+//                color: Colors.black,
+//
+//              )
+//          ),
+//          centerTitle: false,
+//        ),
+        backgroundColor: Colors.white,
+
+        body: SafeArea(
+          child: Container(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text( "Reataurants",
+                      style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal*9 ,
+                        fontWeight: FontWeight.bold,
+                      )
+                  ),
+                  RestaurantItem(),
+                  RestaurantItem(),
+                ],
+              ),
             ),
-            RestaurantItem(),
-            RestaurantItem(),
-          ],
+          ),
         ),
-      ),
-    );
+      );
   }
 }
