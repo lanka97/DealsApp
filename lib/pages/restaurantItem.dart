@@ -62,16 +62,16 @@ class _RestaurantItemState extends State<RestaurantItem> {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    "Ammage Reataurant EKaaa",
+                    "Yue Chuan @ The Kingsburry",
                     style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 5.5,
+                      fontSize: SizeConfig.blockSizeHorizontal * 4.576,
                       fontWeight: FontWeight.bold,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+//                  flex: 1,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -83,15 +83,19 @@ class _RestaurantItemState extends State<RestaurantItem> {
                       ),
                       Text("5.0",
                           style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3,
 //                          fontWeight: FontWeight.bold,
-                          )),
-                      Text("(40)",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                            color: Colors.black45,
+                          ),
+                        overflow: TextOverflow.ellipsis,),
+                      Flexible(
+                        child: Text("(40)",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                              color: Colors.black45,
 //                          fontWeight: FontWeight.bold,
-                          )),
+                            ),
+                          overflow: TextOverflow.ellipsis,),
+                      ),
                     ],
                   ),
                 )
@@ -159,30 +163,40 @@ class _RestaurantItemState extends State<RestaurantItem> {
 //      ),
 //    );
 
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: SizeConfig.screenWidth * 0.15,
-        width: SizeConfig.screenWidth * 0.15,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.red,
-        ),
-        child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("10.30",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: SizeConfig.blockSizeHorizontal * 3)),
-            Text("20%",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                    fontWeight: FontWeight.bold))
-          ],
-        )),
+    return Container(
+      height: SizeConfig.screenWidth * 0.2,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 15,
+          itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: SizeConfig.screenWidth * 0.15,
+                    width: SizeConfig.screenWidth * 0.15,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.red,
+                    ),
+                    child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("10.30",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: SizeConfig.blockSizeHorizontal * 3)),
+                            Text("20%",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                                    fontWeight: FontWeight.bold))
+                          ],
+                        )),
+                  ),
+                );
+          }
+
       ),
     );
   }
