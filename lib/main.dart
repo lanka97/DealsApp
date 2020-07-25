@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:offpeak/utils/size_config.dart';
+import 'package:offpeak/pages/view_restaurant.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,9 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      appBar: AppBar(
-      ),
-    );
+    return ViewRestaurant();
   }
 }
