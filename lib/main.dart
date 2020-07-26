@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
-import 'pages/reservation.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
+      routes: {
+        ViewRestaurant.routeName: (context) => ViewRestaurant()
+      },
     );
   }
 }
@@ -33,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    return ViewRestaurant();
     return Scaffold(
       appBar: AppBar(
       ),

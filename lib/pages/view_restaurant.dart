@@ -192,6 +192,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   }
 
   Widget _topImage(){
+    final topPosition = SizeConfig.safeBlockVertical * 3;
     return Container(
       width: double.infinity,
       height: SizeConfig.blockSizeVertical * 35,
@@ -202,6 +203,53 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
             child: CachedNetworkImage(
               fit: BoxFit.cover,
               imageUrl: _restaurant.image,
+            ),
+          ),
+          Positioned(
+            top: topPosition,
+            child: RawMaterialButton(
+              onPressed: () {
+                //TODO: navigator pop
+              },
+              elevation: 2.0,
+              fillColor: Colors.white,
+              child: Icon(
+                Icons.arrow_back_ios,
+                size: 20.0,
+              ),
+              shape: CircleBorder(),
+            ),
+          ),
+          Positioned(
+            top: topPosition,
+            right: 50,
+            child: RawMaterialButton(
+              onPressed: () {
+                //TODO: navigator pop
+              },
+              elevation: 2.0,
+              fillColor: Colors.white,
+              child: Icon(
+                Icons.share,
+                size: 20.0,
+              ),
+              shape: CircleBorder(),
+            ),
+          ),
+          Positioned(
+            top: topPosition,
+            right: 3,
+            child: RawMaterialButton(
+              onPressed: () {
+                //TODO: navigator pop
+              },
+              elevation: 2.0,
+              fillColor: Colors.white,
+              child: Icon(
+                Icons.favorite_border,
+                size: 20.0,
+              ),
+              shape: CircleBorder(),
             ),
           )
         ],
@@ -261,7 +309,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     final textTheme = Theme.of(context).textTheme;
     final restaurantMenuList =_restaurant.restaurantMenuList;
     final menuTextSize = SizeConfig.blockSizeHorizontal * 3.7;
-    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w800,fontSize: SizeConfig.blockSizeHorizontal * 4);
+    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w600,fontSize: SizeConfig.blockSizeHorizontal * 4);
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -352,7 +400,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   Widget _secondTabView(){
     final textTheme = Theme.of(context).textTheme;
     final normalTextSize =SizeConfig.blockSizeHorizontal * 4;
-    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w800,fontSize: normalTextSize);
+    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w600,fontSize: normalTextSize);
     final titleTextTheme = normalTextTheme.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 6,color: Color(0xFF4A4B71));
     return Container(
       child: Column(
@@ -403,7 +451,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   Widget _topTextRowAbout(String name,List<String> list){
     final textTheme = Theme.of(context).textTheme;
     final normalTextSize =SizeConfig.blockSizeHorizontal * 4;
-    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w800,fontSize: normalTextSize);
+    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w600,fontSize: normalTextSize);
     final topSpacing = normalTextSize * 7;
     return           Row(
       children: <Widget>[
@@ -416,7 +464,48 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   }
   
   Widget _thirdTabView(){
-    return Container();
+    return Container(
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        itemCount: 150,
+        itemBuilder: (BuildContext context, int index) =>_reviewItem(
+          name: "ABC",
+          profile: "https://images.generated.photos/D2VZmG6nKcw2YzJu0XmcGFEiO060xLV_es5yYU2YEkY/rs:fit:256:256/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zL3Yz/XzAwODEwOTcuanBn.jpg",
+          rate: "This was our first stop of our 12 day holiday in Sri Lanka. We had a lovely warm welcome from hotel reception staff. The hotel is in an ideal location near to the sea shore and promenade where in the evening there is a good selection of street food stalls. The breakfast buffet was an amazing sight the largest display I have ever seen, wonderful choice of everything you could wish to have. "
+        ),
+      ),
+    );
+  }
+  Widget _reviewItem({String profile, String rate, String name}){
+    final radius = BorderRadius.circular(50);
+    final textStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.w700);
+    return Container(
+      padding: EdgeInsets.only(top: 5,bottom: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          CircleAvatar(
+            child: ClipRRect(
+              borderRadius: radius,
+                child: Image.network(profile)),
+          ),
+          SizedBox(width: SizeConfig.blockSizeHorizontal *3,),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(name,style: textStyle,),
+                Text(rate,style: textStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3,fontWeight: FontWeight.normal),),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 
 }
