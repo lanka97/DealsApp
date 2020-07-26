@@ -188,6 +188,8 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           decoration: InputDecoration.collapsed(hintText: "Voucher Code (if any)",hintStyle: hintStyle),
         );
         break;
+      default:
+        return Container();
     }
   }
 
@@ -257,10 +259,8 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     );
   }
 
-
-
   Widget _myTabView() {
-    final _tabs = [
+        final _tabs = [
       Tab(
         text: 'Menu',
       ),
@@ -271,39 +271,39 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         text: 'Reviews',
       ),
     ];
-    final unselectedLabelColor = Color(0xFF4D4E74);
+
+     final unselectedLabelColor = Color(0xFF4D4E74);
     final indicatorColor = Color(0xFFDF8B37);
     final labelColor = indicatorColor;
     final tabTextStyle = Theme.of(context).textTheme.headline6.copyWith(
       fontWeight: FontWeight.w900
     );
-    return DefaultTabController(
-        length: 3,
-        child: Column(
-          children: <Widget>[
-            TabBar(
-              controller: _mainTabController,
-              onTap: (index){
-                setState(() {
-                  _tabIndex = index;
-                });
-              },
-              labelColor: labelColor,
-              labelStyle: tabTextStyle,
-              unselectedLabelStyle: tabTextStyle,
-              indicatorColor: indicatorColor,
-              unselectedLabelColor: unselectedLabelColor,
-              indicatorSize: TabBarIndicatorSize.tab,
-              tabs: _tabs,
-            ),
-            TabsView(
-              tabIndex: _tabIndex,
-              firstTab: _firstTabView(),
-              secondTab: _secondTabView(),
-              thirdTab: _thirdTabView(),
-            )
-          ],
-        ));
+    return  Column(
+      children: <Widget>[
+        TabBar(
+          controller: _mainTabController,
+          labelColor: labelColor,
+          labelStyle: tabTextStyle,
+          unselectedLabelStyle: tabTextStyle,
+          indicatorColor: indicatorColor,
+          unselectedLabelColor: unselectedLabelColor,
+          indicatorSize: TabBarIndicatorSize.tab,
+          tabs: _tabs,
+          onTap: (index){
+            setState(() {
+              _tabIndex = index;
+            });
+          },
+        ),
+        Container(
+          child: [
+            _firstTabView(),
+            _secondTabView(),
+            _thirdTabView(),
+          ][_tabIndex],
+        ),
+      ],
+    );
   }
   Widget _firstTabView(){
     final textTheme = Theme.of(context).textTheme;
@@ -510,54 +510,3 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
 
 }
 enum _TextField{Date,Guests,Voucher}
-
-class TabsView extends StatelessWidget {
-  TabsView(
-      {Key key,
-        @required this.tabIndex,
-        @required this.firstTab,
-        @required this.secondTab,
-        @required this.thirdTab,
-      })
-      : super(key: key);
-
-  final int tabIndex;
-  final Widget firstTab;
-  final Widget secondTab;
-  final Widget thirdTab;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AnimatedContainer(
-          child: firstTab,
-          width: SizeConfig.screenWidth,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-          transform: Matrix4.translationValues(
-              tabIndex == 0 ? 0 : -SizeConfig.screenWidth, 0, 0),
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeIn,
-        ),
-        AnimatedContainer(
-          child: secondTab,
-          width: SizeConfig.screenWidth,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-          transform: Matrix4.translationValues(
-              tabIndex == 1 ? 0 : tabIndex == 2? -SizeConfig.screenWidth: SizeConfig.screenWidth, 0, 0),
-          duration: Duration(milliseconds: 300),
-          curve: Curves.ease,
-        ),
-        AnimatedContainer(
-          child: thirdTab,
-          width: SizeConfig.screenWidth,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-          transform: Matrix4.translationValues(
-              tabIndex == 2 ? 0 : SizeConfig.screenWidth, 0, 0),
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeIn,
-        ),
-      ],
-    );
-  }
-}
