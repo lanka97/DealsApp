@@ -54,7 +54,7 @@ class _Scan extends State<Scan> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22.0
+                              fontSize: SizeConfig.blockSizeHorizontal * 5.5
                           ),
                         )
                       ],
