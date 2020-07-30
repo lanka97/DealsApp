@@ -1,5 +1,4 @@
-
-class Reserve{
+class Reserve {
   String title;
   String date;
   String time;

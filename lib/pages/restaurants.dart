@@ -13,8 +13,8 @@ class Restaurants extends StatefulWidget {
 }
 
 class _RestaurantsState extends State<Restaurants> {
-  RestaurantCard res = new RestaurantCard("this.img", "this.price", "this.name", "this.address", "this.verity",
-      5.0, 5);
+  RestaurantCard res = new RestaurantCard("this.img", "this.price", "this.name",
+      "this.address", "this.verity", 5.0, 5);
   List<RestaurantCard> restaurant = [];
 
   @override
@@ -42,39 +42,36 @@ class _RestaurantsState extends State<Restaurants> {
 //          ),
 //          centerTitle: false,
 //        ),
-        backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
 
-        body: SafeArea(
-          child: Container(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text( "Restaurants",
-                      style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal*9 ,
-                        fontWeight: FontWeight.bold,
-                      )
-                  ),
-                  Container(
-                    height: SizeConfig.screenHeight * 0.88,
-                    child: ListView.builder(
+      body: SafeArea(
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Restaurants",
+                    style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 9,
+                      fontWeight: FontWeight.bold,
+                    )),
+                Container(
+                  height: SizeConfig.screenHeight * 0.88,
+                  child: ListView.builder(
 //                        scrollDirection: Axis.horizontal,
 //                        physics: Scrollable(),
-                        itemCount: 15,
-                        itemBuilder: (context, index) {
-                          return RestaurantItem();
-                        }
-
-                    ),
-                  )
-                ],
-              ),
+                      itemCount: 15,
+                      itemBuilder: (context, index) {
+                        return RestaurantItem();
+                      }),
+                )
+              ],
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }

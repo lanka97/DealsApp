@@ -4,16 +4,15 @@ import 'package:offpeak/pages/scan.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/models/reserve.dart';
 
-
-class Reservation extends StatefulWidget{
+class Reservation extends StatefulWidget {
   static const routeName = "reservation";
   @override
   _Reservation createState() => _Reservation();
 }
 
-
 class _Reservation extends State<Reservation> {
-  Reserve reserve = new Reserve("Yue Chuan @ The Kingburry", "Tommorow", "10.30 a.m.", "10%", "2", "Colombo-01");
+  Reserve reserve = new Reserve("Yue Chuan @ The Kingburry", "Tommorow",
+      "10.30 a.m.", "10%", "2", "Colombo-01");
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +24,11 @@ class _Reservation extends State<Reservation> {
             icon: Icon(Icons.arrow_back_ios, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: Text(
-              "Reservation Details",
+          title: Text("Reservation Details",
               style: TextStyle(
                   fontSize: SizeConfig.blockSizeHorizontal * 7.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black
-              )
-          ),
+                  color: Colors.black)),
           centerTitle: true,
         ),
         backgroundColor: Colors.white,
@@ -50,12 +46,15 @@ class _Reservation extends State<Reservation> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 20.0, vertical: SizeConfig.blockSizeVertical * 4.0),
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.blockSizeHorizontal * 20.0,
+                    vertical: SizeConfig.blockSizeVertical * 4.0),
                 child: Card(
                   color: Colors.white,
                   shadowColor: Colors.transparent,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 3.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.blockSizeHorizontal * 3.0),
                     child: Container(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,15 +66,16 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'Date',
                                 style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 4.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 reserve.date,
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.0
-                                ),
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.0),
                               )
                             ],
                           ),
@@ -86,15 +86,16 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'Time',
                                 style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 4.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 reserve.time,
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.0
-                                ),
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.0),
                               )
                             ],
                           ),
@@ -105,15 +106,16 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'Discount',
                                 style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 4.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 reserve.discount,
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.0
-                                ),
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.0),
                               )
                             ],
                           ),
@@ -124,15 +126,16 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'People',
                                 style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 4.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
-                                reserve.people+" People",
+                                reserve.people + " People",
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.0
-                                ),
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.0),
                               )
                             ],
                           ),
@@ -143,15 +146,16 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'Location',
                                 style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 4.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 reserve.location,
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.0
-                                ),
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.0),
                               )
                             ],
                           )
@@ -167,17 +171,18 @@ class _Reservation extends State<Reservation> {
                 style: TextStyle(
                     fontSize: SizeConfig.blockSizeHorizontal * 6.0,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold
-                ),
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.01),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 3.0),
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.blockSizeHorizontal * 3.0),
                 child: Card(
                   color: Colors.white,
                   shadowColor: Colors.transparent,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 6.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.blockSizeHorizontal * 6.0),
                     child: Container(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,33 +194,31 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'Name',
                                 style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 4.5,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               SizedBox(
-                                width:SizeConfig.screenWidth * 0.6,
+                                width: SizeConfig.screenWidth * 0.6,
                                 height: SizeConfig.screenHeight * 0.05,
                                 child: TextField(
                                   style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.5,
                                   ),
                                   decoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                      borderSide: BorderSide(
-                                          color: Colors.grey
-                                      ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide:
+                                          BorderSide(color: Colors.grey),
                                     ),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                      borderSide: new BorderSide(
-                                          color: Colors.grey
-                                      ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide:
+                                          new BorderSide(color: Colors.grey),
                                     ),
                                   ),
                                 ),
@@ -229,34 +232,31 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'Phone',
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                                    fontWeight: FontWeight.bold
-                                ),
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.5,
+                                    fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
-                                width:SizeConfig.screenWidth * 0.6,
+                                width: SizeConfig.screenWidth * 0.6,
                                 height: SizeConfig.screenHeight * 0.05,
                                 child: TextFormField(
                                   initialValue: "+94",
                                   style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.5,
                                   ),
                                   decoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                      borderSide: BorderSide(
-                                          color: Colors.grey
-                                      ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide:
+                                          BorderSide(color: Colors.grey),
                                     ),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                      borderSide: new BorderSide(
-                                          color: Colors.grey
-                                      ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide:
+                                          new BorderSide(color: Colors.grey),
                                     ),
                                   ),
                                 ),
@@ -270,33 +270,30 @@ class _Reservation extends State<Reservation> {
                               Text(
                                 'E-mail',
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                                    fontWeight: FontWeight.bold
-                                ),
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.5,
+                                    fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
-                                width:SizeConfig.screenWidth * 0.6,
+                                width: SizeConfig.screenWidth * 0.6,
                                 height: SizeConfig.screenHeight * 0.05,
                                 child: TextField(
                                   style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 4.5,
                                   ),
                                   decoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                      borderSide: BorderSide(
-                                          color: Colors.grey
-                                      ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide:
+                                          BorderSide(color: Colors.grey),
                                     ),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)
-                                      ),
-                                      borderSide: new BorderSide(
-                                          color: Colors.grey
-                                      ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide:
+                                          new BorderSide(color: Colors.grey),
                                     ),
                                   ),
                                 ),
@@ -317,46 +314,43 @@ class _Reservation extends State<Reservation> {
                   style: TextStyle(
                       color: Colors.orange,
                       fontWeight: FontWeight.bold,
-                      fontSize: SizeConfig.blockSizeHorizontal * 6.0
-                  ),
+                      fontSize: SizeConfig.blockSizeHorizontal * 6.0),
                 ),
-                onTap: () {print("value of your text");},
+                onTap: () {
+                  print("value of your text");
+                },
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.02),
               Container(
-                margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0, bottom: 10.0),
+                margin: const EdgeInsets.only(
+                    left: 20.0, right: 20.0, top: 10.0, bottom: 10.0),
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: 'By clicking on "Confirm the Reservation", I agree with the  ',
+                        text:
+                            'By clicking on "Confirm the Reservation", I agree with the  ',
                         style: TextStyle(
                             color: Colors.black54,
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.75
-                        ),
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.75),
                       ),
                       TextSpan(
                           text: 'Terms & Conditions',
                           style: TextStyle(
                               color: Colors.orange,
-                              fontSize: SizeConfig.blockSizeHorizontal * 3.75
-                          )
-                      ),
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.75)),
                       TextSpan(
                         text: ' and ',
                         style: TextStyle(
                             color: Colors.black54,
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.75
-                        ),
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.75),
                       ),
                       TextSpan(
                           text: 'Privacy Policy.',
                           style: TextStyle(
                               color: Colors.orange,
-                              fontSize: SizeConfig.blockSizeHorizontal * 3.75
-                          )
-                      )
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.75))
                     ],
                   ),
                 ),
@@ -365,7 +359,8 @@ class _Reservation extends State<Reservation> {
               Container(
                 height: SizeConfig.screenHeight * 0.075,
                 child: FlatButton(
-                  padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 8.0),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.blockSizeHorizontal * 8.0),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -393,8 +388,7 @@ class _Reservation extends State<Reservation> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: SizeConfig.blockSizeHorizontal * 5.5
-                            ),
+                                fontSize: SizeConfig.blockSizeHorizontal * 5.5),
                           )
                         ],
                       ),
@@ -404,8 +398,6 @@ class _Reservation extends State<Reservation> {
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }
-
