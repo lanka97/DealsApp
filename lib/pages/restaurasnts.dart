@@ -4,6 +4,8 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/pages/restaurantItem.dart';
 
+import '../utils/size_config.dart';
+
 class Restaurants extends StatefulWidget {
   @override
   _RestaurantsState createState() => _RestaurantsState();
@@ -55,8 +57,18 @@ class _RestaurantsState extends State<Restaurants> {
                         fontWeight: FontWeight.bold,
                       )
                   ),
-                  RestaurantItem(),
-                  RestaurantItem(),
+                  Container(
+                    height: SizeConfig.screenHeight*0.9,
+                    child: ListView.builder(
+//                        scrollDirection: Axis.horizontal,
+//                        physics: Scrollable(),
+                        itemCount: 15,
+                        itemBuilder: (context, index) {
+                          return RestaurantItem();
+                        }
+
+                    ),
+                  )
                 ],
               ),
             ),

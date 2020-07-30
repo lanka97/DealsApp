@@ -26,7 +26,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
                   'assets/images/img.jpg',
                 ),
                 width: SizeConfig.screenWidth * 0.98,
-                height: SizeConfig.screenHeight * 0.2,
+                height: SizeConfig.screenHeight * 0.15,
                 fit: BoxFit.cover,
               ),
             ),
@@ -83,7 +83,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
                       ),
                       Text("5.0",
                           style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
 //                          fontWeight: FontWeight.bold,
                           ),
                         overflow: TextOverflow.ellipsis,),
@@ -164,19 +164,19 @@ class _RestaurantItemState extends State<RestaurantItem> {
 //    );
 
     return Container(
-      height: SizeConfig.screenWidth * 0.2,
+      height: SizeConfig.screenWidth * 0.15,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 15,
           itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.fromLTRB(4.0, 8.0, 4.0, 8.0),
                   child: Container(
-                    height: SizeConfig.screenWidth * 0.15,
-                    width: SizeConfig.screenWidth * 0.15,
+                    height: SizeConfig.screenWidth * 0.1,
+                    width: SizeConfig.screenWidth * 0.11,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Colors.red,
+                      color: Colors.red[700],
                     ),
                     child: Center(
                         child: Column(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/pages/restaurasnts.dart';
-import 'pages/reservation.dart';
+//import 'pages/reservation.dart';
 
 void main() {
   runApp(MyApp());
