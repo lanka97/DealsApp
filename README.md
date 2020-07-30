@@ -1,6 +1,8 @@
-# offpeak
+# Happy Hour
 
 A new Flutter application.
+
+![CI](https://github.com/ChathuraNilanka/DealsApp-User/workflows/CI/badge.svg)
 
 ## Getting Started
 
