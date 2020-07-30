@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offpeak/models/restaurant.dart';
+import 'package:offpeak/pages/restaurants.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
 import '../utils/size_config.dart';
@@ -19,6 +21,12 @@ class _Scan extends State<Scan> {
     String cameraScanResult = await scanner.scan();
     setState(() {
       scanResult = cameraScanResult;
+      Navigator.push(
+            context,
+            MaterialPageRoute(
+            builder: (context) => Restaurants(),
+        )
+      );
     });
   }
 
