@@ -13,11 +13,10 @@ class MainMenuItem extends StatelessWidget {
       children: <Widget>[
         Container(
           margin: const EdgeInsets.symmetric(
-            vertical: 5.0,
-            horizontal: 8.0,
+            vertical: 15.0,
+            horizontal: 15.0,
           ),
-          height: 180,
-          width: 169,
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -54,12 +53,18 @@ class MainMenuItem extends StatelessWidget {
 //                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: Colors.black54, fontSize: 10.0),
                 ),
-                Text(
-                  "Rs " + menuFoodItem.price.toStringAsFixed(2),
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 11.0,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      "Rs " + menuFoodItem.price.toStringAsFixed(2),
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
