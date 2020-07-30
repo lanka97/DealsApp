@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:offpeak/pages/rating.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/pages/restaurasnts.dart';
-//import 'pages/reservation.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -18,7 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Rating(),
+      home: MyHomePage(),
+      routes: {
+        ViewRestaurant.routeName: (context) => ViewRestaurant()
+      },
     );
   }
 }
