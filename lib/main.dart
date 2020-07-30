@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
+import 'package:offpeak/pages/restaurasnts.dart';
+
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Deals',
       theme: ThemeData(
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
@@ -36,10 +36,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return ViewRestaurant();
-    return Scaffold(
-      appBar: AppBar(
-      ),
-    );
+    return Restaurants();
   }
 }

@@ -118,10 +118,23 @@ class RestaurantMenuItem{
   double price;
   RestaurantMenuItem({this.name, this.price});
 }
+
 class OpeningHours{
   String day;
   String openAt;
   String closeAt;
 
   OpeningHours({this.day, this.openAt, this.closeAt});
+}
+class RestuarntCard{
+  String img;
+  String price;
+  String name;
+  String address;
+  String verity;
+  double rating;
+  int rateCount;
+
+  Restaurant(this.img, this.price, this.name, this.address, this.verity,
+      this.rating, this.rateCount);
 }
