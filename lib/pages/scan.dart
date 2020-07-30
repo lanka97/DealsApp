@@ -37,7 +37,7 @@ class _Scan extends State<Scan> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(scanResult),
+            Text(""),
             SizedBox(height: 20),
             Container(
               height: SizeConfig.screenHeight * 0.075,
