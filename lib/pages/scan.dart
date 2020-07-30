@@ -6,6 +6,7 @@ import 'package:qrscan/qrscan.dart' as scanner;
 import '../utils/size_config.dart';
 
 class Scan extends StatefulWidget{
+  static const routeName = "scan";
   @override
   _Scan createState() => _Scan();
 }

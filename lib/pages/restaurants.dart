@@ -7,14 +7,15 @@ import 'package:offpeak/pages/restaurantItem.dart';
 import '../utils/size_config.dart';
 
 class Restaurants extends StatefulWidget {
+  static const routeName = "restaurants";
   @override
   _RestaurantsState createState() => _RestaurantsState();
 }
 
 class _RestaurantsState extends State<Restaurants> {
-  Restaurant res = new Restaurant("this.img", "this.price", "this.name", "this.address", "this.verity",
+  RestaurantCard res = new RestaurantCard("this.img", "this.price", "this.name", "this.address", "this.verity",
       5.0, 5);
-  List<Restaurant> restaurant = [];
+  List<RestaurantCard> restaurant = [];
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +52,14 @@ class _RestaurantsState extends State<Restaurants> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text( "Reataurants",
+                  Text( "Restaurants",
                       style: TextStyle(
                         fontSize: SizeConfig.blockSizeHorizontal*9 ,
                         fontWeight: FontWeight.bold,
                       )
                   ),
                   Container(
-                    height: SizeConfig.screenHeight*0.9,
+                    height: SizeConfig.screenHeight * 0.88,
                     child: ListView.builder(
 //                        scrollDirection: Axis.horizontal,
 //                        physics: Scrollable(),

@@ -6,6 +6,7 @@ import 'package:offpeak/models/reserve.dart';
 
 
 class Reservation extends StatefulWidget{
+  static const routeName = "reservation";
   @override
   _Reservation createState() => _Reservation();
 }

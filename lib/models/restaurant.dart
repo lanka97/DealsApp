@@ -26,11 +26,14 @@ class Restaurant{
 
   List<String> categories = ["Chinese","Thai","Italian"];
   List<Promotion> promotionList = [
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
+    Promotion(time: "9:30",percentage: "10%"),
+    Promotion(time: "10:30",percentage: "20%"),
+    Promotion(time: "11:30",percentage: "30%"),
+    Promotion(time: "1:30",percentage: "40%"),
+    Promotion(time: "2:30",percentage: "10%"),
+    Promotion(time: "3:30",percentage: "20%"),
+    Promotion(time: "4:30",percentage: "30%"),
+    Promotion(time: "5:30",percentage: "40%"),
   ];
   List<RestaurantMenu> restaurantMenuList = [
     RestaurantMenu(
@@ -126,7 +129,7 @@ class OpeningHours{
 
   OpeningHours({this.day, this.openAt, this.closeAt});
 }
-class RestuarntCard{
+class RestaurantCard{
   String img;
   String price;
   String name;
@@ -135,6 +138,6 @@ class RestuarntCard{
   double rating;
   int rateCount;
 
-  Restaurant(this.img, this.price, this.name, this.address, this.verity,
+  RestaurantCard(this.img, this.price, this.name, this.address, this.verity,
       this.rating, this.rateCount);
 }

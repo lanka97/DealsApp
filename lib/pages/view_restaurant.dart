@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:offpeak/models/restaurant.dart';
+import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
 class ViewRestaurant extends StatefulWidget {
@@ -131,6 +132,9 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                       alignment: Alignment.center,
                       child: _textFieldWidget(_TextField.Voucher),
                     ),
+                    Container(
+                      child: _reserveButton(),
+                    ),
                   ],
                 ),
               ),
@@ -144,15 +148,15 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
 
   Padding _promotionListItem(Promotion promotion, TextTheme textTheme, Color redColor) {
     return Padding(
-              padding: const EdgeInsets.only(right: 5),
+              padding: const EdgeInsets.only(right: 4),
               child: Container(
-                height: SizeConfig.blockSizeHorizontal * 15,
-                width: SizeConfig.blockSizeHorizontal * 15,
+                height: SizeConfig.blockSizeHorizontal * 16,
+                width: SizeConfig.blockSizeHorizontal * 16,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 5),),
+                    Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4.75),),
                     Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4),),
                   ],
                 ),
@@ -191,6 +195,49 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
       default:
         return Container();
     }
+  }
+
+  Widget _reserveButton(){
+    return Container(
+      height: SizeConfig.screenHeight * 0.055,
+      child: FlatButton(
+        padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 20.0),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Reservation(),
+            ),
+          );
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+        ),
+        child: Ink(
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+          ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  "Reserve Now",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.5
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _topImage(){
