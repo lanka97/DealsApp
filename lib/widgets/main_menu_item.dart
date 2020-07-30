@@ -12,9 +12,9 @@ class MainMenuItem extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
-          margin: const EdgeInsets.symmetric(
-            vertical: 15.0,
-            horizontal: 15.0,
+          margin: EdgeInsets.symmetric(
+            vertical: SizeConfig.blockSizeVertical * 2.0,
+            horizontal: SizeConfig.blockSizeHorizontal * 4.0,
           ),
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
@@ -34,8 +34,10 @@ class MainMenuItem extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.blockSizeHorizontal * 4.2,
+              vertical: SizeConfig.blockSizeVertical * 1.5,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -44,14 +46,17 @@ class MainMenuItem extends StatelessWidget {
                   menuFoodItem.name,
                   style: TextStyle(
                     color: Colors.blue,
-                    fontSize: 12.0,
+                    fontSize: SizeConfig.blockSizeHorizontal * 2.8,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   menuFoodItem.description,
 //                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.black54, fontSize: 10.0),
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: SizeConfig.blockSizeHorizontal * 2.7,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -60,7 +65,7 @@ class MainMenuItem extends StatelessWidget {
                       "Rs " + menuFoodItem.price.toStringAsFixed(2),
                       style: TextStyle(
                         color: Colors.black54,
-                        fontSize: 14.0,
+                        fontSize: SizeConfig.blockSizeHorizontal * 3.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -74,7 +79,7 @@ class MainMenuItem extends StatelessWidget {
           top: 0.0,
           left: 0.0,
           child: CircleAvatar(
-            radius: 50.0,
+            radius: SizeConfig.blockSizeHorizontal * 13.0,
             backgroundImage: NetworkImage(menuFoodItem.image),
           ),
         )

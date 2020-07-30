@@ -153,7 +153,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
           "https://hips.hearstapps.com/hmg-prod/images/delish-lemon-chicken-wraps-still002-1536963118.jpg",
       name: "Tuna Wrap",
       description: _description,
-      price: 30.00,
+      price: 300.00,
       category: "Wraps",
       isTopPick: false,
     ),
@@ -214,34 +214,36 @@ class _MainMenuPageState extends State<MainMenuPage> {
               Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0,
-                      vertical: 15.0,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.blockSizeHorizontal * 4.0,
+                      vertical: SizeConfig.blockSizeHorizontal * 4.0,
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
                           child: CircleAvatar(
-                            radius: 15.0,
+                            radius: SizeConfig.blockSizeHorizontal * 4.5,
                             backgroundColor: Colors.grey.withOpacity(0.4),
                             child: Icon(
                               Icons.arrow_back_ios,
                               color: Colors.black,
-                              size: 20.0,
+                              size: SizeConfig.blockSizeHorizontal * 5.0,
                             ),
                           ),
                         ),
-                        SizedBox(width: 15.0),
+                        SizedBox(width: SizeConfig.blockSizeHorizontal * 5.0),
                         Expanded(
                           child: Text(
                             "Welcome to $_restaurant @ $_venue",
                             style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 26.0,
+                                fontSize: SizeConfig.blockSizeHorizontal * 6.5,
                                 fontWeight: FontWeight.bold,
-                                height: 1.1),
+                                height: SizeConfig.blockSizeHorizontal * 0.35),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -256,10 +258,16 @@ class _MainMenuPageState extends State<MainMenuPage> {
                   children: List.generate(
                     _tabHeadings.length,
                     (index) => Container(
-                      width: SizeConfig.blockSizeVertical,
+                      width: SizeConfig.blockSizeVertical * 17.0,
                       margin: index == _tabHeadings.length - 1
-                          ? EdgeInsets.only(left: 15.0, right: 15.0)
-                          : EdgeInsets.only(left: 15.0, right: 0.0),
+                          ? EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 3.0,
+                              right: SizeConfig.blockSizeHorizontal * 5.0,
+                            )
+                          : EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 3.0,
+                              right: 0.0,
+                            ),
                       child: FlatButton(
                         onPressed: () {
                           setState(() {
@@ -272,7 +280,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                             ? Colors.black
                             : Colors.transparent,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                         child: Text(
                           _tabHeadings[index],
@@ -280,7 +288,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                             color: _selectedMenuItem == index
                                 ? Colors.white
                                 : Colors.black,
-                            fontSize: 12.0,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                           ),
                         ),
                       ),
@@ -288,12 +296,16 @@ class _MainMenuPageState extends State<MainMenuPage> {
                   ).toList(),
                 ),
               ),
-              SizedBox(height: 8.0),
+              SizedBox(height: SizeConfig.blockSizeHorizontal * 5.0),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.blockSizeHorizontal * 5.0,
+                  ),
                   child: GridView.count(
-                    childAspectRatio: (2 / 2.3),
+                    childAspectRatio: (SizeConfig.blockSizeHorizontal /
+                        SizeConfig.blockSizeVertical *
+                        1.5),
                     crossAxisCount: 2,
                     scrollDirection: Axis.vertical,
                     children: List.generate(
@@ -308,9 +320,14 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                   content:
                                       ItemDialog(foodItem: tempMenuList[index]),
                                   contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 10.0, vertical: 10.0),
+                                      horizontal:
+                                          SizeConfig.blockSizeHorizontal * 5.0,
+                                      vertical:
+                                          SizeConfig.blockSizeHorizontal * 4.0),
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderRadius: BorderRadius.circular(
+                                      15.0,
+                                    ),
                                   ),
                                 );
                               });
@@ -322,9 +339,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15.0,
-                  vertical: 10.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.blockSizeHorizontal * 5.0,
+                  vertical: SizeConfig.blockSizeHorizontal * 4.0,
                 ),
                 child: FlatButton(
                   onPressed: () async {
@@ -349,7 +366,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                             return AlertDialog(
                               content: Container(
                                 width: 420,
-                                height: 200,
+                                height: SizeConfig.blockSizeVertical * 20,
                                 child: Column(
                                   children: <Widget>[
                                     Center(
@@ -358,7 +375,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                         child: Text(
                                           'Are you sure you want to order?',
                                           style: TextStyle(
-                                            fontSize: 18.0,
+                                            fontSize:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    5.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -366,7 +385,8 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                     ),
                                     Center(
                                       child: Container(
-                                        margin: EdgeInsets.only(top: 32),
+                                        height:
+                                            SizeConfig.blockSizeVertical * 5.0,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -377,7 +397,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                                 child: Text(
                                                   'Check the order',
                                                   style: TextStyle(
-                                                    fontSize: 12,
+                                                    fontSize: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        3.5,
                                                     decoration: TextDecoration
                                                         .underline,
                                                   ),
@@ -393,7 +415,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                                               EdgeInsets
                                                                   .symmetric(
                                                             horizontal: 0.0,
-                                                            vertical: 10.0,
+                                                            vertical: SizeConfig
+                                                                    .blockSizeHorizontal *
+                                                                5.0,
                                                           ),
                                                           shape:
                                                               RoundedRectangleBorder(
@@ -422,7 +446,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                                     BorderRadius.circular(22.0),
                                               ),
                                               child: Container(
-                                                height: 45.0,
+                                                height: SizeConfig
+                                                        .blockSizeVertical *
+                                                    5.0,
                                                 child: Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.start,
@@ -434,7 +460,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
                                                     Text(
                                                       ' Order',
                                                       style: TextStyle(
-                                                        fontSize: 18.0,
+                                                        fontSize: SizeConfig
+                                                                .blockSizeHorizontal *
+                                                            5.0,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         color: Colors.white,
@@ -465,10 +493,11 @@ class _MainMenuPageState extends State<MainMenuPage> {
                   },
                   color: Colors.red[800],
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
                   child: Container(
                     width: SizeConfig.screenWidth,
+                    height: SizeConfig.blockSizeVertical * 7.0,
                     child: Center(
                       child: Text(
                         Order.order.items.isEmpty
@@ -476,6 +505,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
                             : "Order (${Order.order.items.length})",
                         style: TextStyle(
                           color: Colors.white,
+                          fontSize: SizeConfig.blockSizeHorizontal * 4.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

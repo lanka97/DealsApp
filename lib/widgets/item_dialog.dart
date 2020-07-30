@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:offpeak/utils/size_config.dart';
 import '../models/food_item.dart';
 
 class ItemDialog extends StatefulWidget {
@@ -51,45 +52,48 @@ class _ItemDialogState extends State<ItemDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 600.0,
-        height: 684.0,
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  widget.foodItem.name,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+      width: 600.0,
+      height: 684.0,
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                widget.foodItem.name,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: SizeConfig.blockSizeHorizontal * 6,
+                  fontWeight: FontWeight.bold,
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    size: 25.0,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.close,
+                  size: SizeConfig.blockSizeHorizontal * 8,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          ),
+          Text(
+            widget.foodItem.description,
+            style: TextStyle(
+              color: Color.fromRGBO(136, 136, 136, 1),
+              fontSize: SizeConfig.blockSizeHorizontal * 5.0,
             ),
-            Text(
-              widget.foodItem.description,
-              style: TextStyle(
-                  color: Color.fromRGBO(136, 136, 136, 1), fontSize: 15.0),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                  child: Column(
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 10.0),
-                    width: 310,
-                    height: 180.0,
+                    margin: EdgeInsets.symmetric(
+                        vertical: SizeConfig.blockSizeVertical * 4.0),
+                    width: SizeConfig.screenWidth,
+                    height: SizeConfig.screenHeight * 0.25,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: [
@@ -115,14 +119,14 @@ class _ItemDialogState extends State<ItemDialog> {
                               'Variances',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16.0,
+                                fontSize: SizeConfig.blockSizeHorizontal * 5.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
                         Container(
-                          width: 585.0,
+                          width: SizeConfig.screenWidth,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: List.generate(
@@ -146,7 +150,10 @@ class _ItemDialogState extends State<ItemDialog> {
                                     ),
                                     Text(
                                       variances[index],
-                                      style: TextStyle(fontSize: 14.0),
+                                      style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  4.0),
                                     ),
                                   ],
                                 ),
@@ -166,15 +173,16 @@ class _ItemDialogState extends State<ItemDialog> {
                               'Add-ons',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16.0,
+                                fontSize: SizeConfig.blockSizeHorizontal * 5.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10.0),
-                          width: 585.0,
+                          margin: EdgeInsets.only(
+                              top: SizeConfig.blockSizeHorizontal * 4.0),
+                          width: SizeConfig.screenWidth,
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -189,30 +197,45 @@ class _ItemDialogState extends State<ItemDialog> {
                                     children: <Widget>[
                                       for (int j = 0; j < 3; j++)
                                         Container(
-                                          width: 190.0,
+                                          width: SizeConfig.screenWidth * 0.5,
                                           child: Row(
                                             children: <Widget>[
                                               Container(
                                                 margin: EdgeInsets.symmetric(
-                                                    horizontal: 10.0,
-                                                    vertical: 0.0),
-                                                width: 24.0,
-                                                height: 24.0,
+                                                  horizontal: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      4.0,
+                                                  vertical: SizeConfig
+                                                          .blockSizeVertical *
+                                                      1.0,
+                                                ),
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    8,
+                                                height: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    8,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          3.0),
+                                                    3.0,
+                                                  ),
                                                   border: Border.all(
                                                     color: Color.fromRGBO(
-                                                        112, 112, 112, 1),
+                                                      112,
+                                                      112,
+                                                      112,
+                                                      1,
+                                                    ),
                                                   ),
                                                   color: Colors.white,
                                                   boxShadow: [
                                                     BoxShadow(
-                                                        blurRadius: 7.0,
-                                                        color: Colors.black
-                                                            .withOpacity(0.1),
-                                                        spreadRadius: 1.0)
+                                                      blurRadius: 7.0,
+                                                      color: Colors.black
+                                                          .withOpacity(0.1),
+                                                      spreadRadius: 1.0,
+                                                    )
                                                   ],
                                                 ),
                                                 child: GestureDetector(
@@ -244,8 +267,13 @@ class _ItemDialogState extends State<ItemDialog> {
                                               Expanded(
                                                   child: Text(
                                                 addon[i * 3 + j].addon,
-                                                style:
-                                                    TextStyle(fontSize: 14.0),
+                                                style: TextStyle(
+                                                    fontSize: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        3.5,
+                                                    height: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        0.5),
                                               )),
                                             ],
                                           ),
@@ -260,7 +288,8 @@ class _ItemDialogState extends State<ItemDialog> {
                       ],
                     ),
                   Container(
-                    margin: EdgeInsets.only(top: 15.0),
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.blockSizeHorizontal * 5.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
@@ -268,14 +297,16 @@ class _ItemDialogState extends State<ItemDialog> {
                           'Note',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 16.0,
+                            fontSize: SizeConfig.blockSizeHorizontal * 4.5,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(8.0),
-                          margin: EdgeInsets.only(left: 12.0),
-                          width: 230.0,
+                          padding: EdgeInsets.all(
+                              SizeConfig.blockSizeHorizontal * 3.0),
+                          margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 3.0),
+                          width: SizeConfig.screenWidth * 0.5,
                           height: 40.0,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5.0),
@@ -289,12 +320,15 @@ class _ItemDialogState extends State<ItemDialog> {
                               ]),
                           child: TextField(
                             controller: noteController,
-                            style: TextStyle(fontSize: 14.0),
+                            style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 4.0),
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText:
                                   'Add a note (add sauce, no onions etc.)',
-                              hintStyle: TextStyle(fontSize: 11.0),
+                              hintStyle: TextStyle(
+                                  fontSize:
+                                      SizeConfig.blockSizeHorizontal * 3.0),
                               hintMaxLines: 1,
                             ),
                           ),
@@ -302,127 +336,137 @@ class _ItemDialogState extends State<ItemDialog> {
                       ],
                     ),
                   ),
-                  Center(
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: SizeConfig.blockSizeVertical * 2.0,
+                    ),
+                    child: Center(
                       child: Container(
-                    margin: EdgeInsets.only(top: 15.0),
-                    width: 130.0,
-                    height: 40.0,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        border:
-                            Border.all(color: Color.fromRGBO(30, 186, 66, 1)),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
+                        margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeHorizontal * 5.0),
+                        width: SizeConfig.screenWidth * 0.4,
+                        height: SizeConfig.blockSizeVertical * 8.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          border:
+                              Border.all(color: Color.fromRGBO(30, 186, 66, 1)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
                               blurRadius: 9.0,
                               color: Colors.black.withOpacity(0.2),
-                              spreadRadius: 1.0)
-                        ]),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(
-                            Icons.remove,
-                            color: Color.fromRGBO(30, 186, 66, 1),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              // ignore: unnecessary_statements
-                              quantity > 1 ? quantity-- : quantity;
-                            });
-                          },
-                        ),
-                        Text(
-                          quantity.toString(),
-                          style: TextStyle(
-                              fontSize: 25.0,
-                              color: Color.fromRGBO(30, 186, 66, 1)),
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.add,
-                            color: Color.fromRGBO(30, 186, 66, 1),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              quantity++;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                  )),
-                  Center(
-                      child: Container(
-                    margin: EdgeInsets.only(top: 10.0),
-                    child: RaisedButton(
-                      color: Color.fromRGBO(30, 186, 66, 1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: Container(
-                        width: 520.0,
-                        height: 45.0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              'Rs. ' +
-                                  price()
-                                      .toString()
-                                      .replaceAllMapped(reg, mathFunc) +
-                                  '.00',
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                            Text(
-                              'Add $quantity to Cart',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              spreadRadius: 1.0,
                             )
                           ],
                         ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(
+                                Icons.remove,
+                                color: Color.fromRGBO(30, 186, 66, 1),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  // ignore: unnecessary_statements
+                                  quantity > 1 ? quantity-- : quantity;
+                                });
+                              },
+                            ),
+                            Text(
+                              quantity.toString(),
+                              style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 6.0,
+                                color: Color.fromRGBO(30, 186, 66, 1),
+                              ),
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                Icons.add,
+                                color: Color.fromRGBO(30, 186, 66, 1),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  quantity++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      onPressed: () {
-                        OrderItem item = new OrderItem();
-                        item.itemId = widget.foodItem.id;
-                        item.itemName = widget.foodItem.name +
-                            " - " +
-                            item.itemId.toString();
-                        item.price = price();
-                        item.quantity = quantity;
-                        item.note = noteController.text;
-                        item.variance = variance;
-                        selectedAddons.forEach((key, value) {
-                          if (value == true) {
-                            item.selectedAddons.add(
-                              addon.firstWhere(
-                                  (element) => element.addon == key),
-                            );
-                          }
-                        });
-
-                        OrderItem currentItem = Order.order.items.firstWhere(
-                            (element) => element.itemId == widget.foodItem.id,
-                            orElse: () => null);
-                        if (currentItem != null) {
-                          Order.order.items.remove(currentItem);
-                        }
-                        Order.order.items.add(item);
-                        Navigator.of(context).pop();
-                      },
                     ),
-                  ))
+                  ),
                 ],
-              )),
-            )
-          ],
-        ));
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin:
+                  EdgeInsets.only(top: SizeConfig.blockSizeHorizontal * 3.0),
+              child: RaisedButton(
+                color: Color.fromRGBO(30, 186, 66, 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: Container(
+                  width: SizeConfig.screenWidth * 0.6,
+                  height: SizeConfig.blockSizeVertical * 7.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Rs. ' +
+                            price().toString().replaceAllMapped(reg, mathFunc) +
+                            '.00',
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        'Add $quantity to Cart',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                onPressed: () {
+                  OrderItem item = new OrderItem();
+                  item.itemId = widget.foodItem.id;
+                  item.itemName =
+                      widget.foodItem.name + " - " + item.itemId.toString();
+                  item.price = price();
+                  item.quantity = quantity;
+                  item.note = noteController.text;
+                  item.variance = variance;
+                  selectedAddons.forEach((key, value) {
+                    if (value == true) {
+                      item.selectedAddons.add(
+                        addon.firstWhere((element) => element.addon == key),
+                      );
+                    }
+                  });
+
+                  OrderItem currentItem = Order.order.items.firstWhere(
+                      (element) => element.itemId == widget.foodItem.id,
+                      orElse: () => null);
+                  if (currentItem != null) {
+                    Order.order.items.remove(currentItem);
+                  }
+                  Order.order.items.add(item);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
