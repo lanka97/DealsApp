@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:offpeak/pages/rating.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/pages/restaurasnts.dart';
 //import 'pages/reservation.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      home: Rating(),
     );
   }
 }
