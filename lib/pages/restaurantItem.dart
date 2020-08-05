@@ -15,132 +15,151 @@ class _RestaurantItemState extends State<RestaurantItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        child: InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ViewRestaurant(),
-          ),
-        );
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image(
-                image: AssetImage(
-                  'assets/images/img.jpg',
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+      child: Card(
+          child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ViewRestaurant(),
+            ),
+          );
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image(
+                  image: AssetImage(
+                    'assets/images/img.jpg',
+                  ),
+                  width: SizeConfig.screenWidth * 0.98,
+                  height: SizeConfig.screenHeight * 0.15,
+                  fit: BoxFit.cover,
                 ),
-                width: SizeConfig.screenWidth * 0.98,
-                height: SizeConfig.screenHeight * 0.15,
-                fit: BoxFit.cover,
               ),
-            ),
-            Container(
-              alignment: Alignment.topRight,
-              width: double.maxFinite,
-              margin: EdgeInsets.only(
-                  top: SizeConfig.screenHeight * 0.0125,
-                  right: SizeConfig.screenWidth * 0.025),
-              child: InkWell(
-                onTap: () => _addToFavourite(),
-                child: Material(
-                    color: Colors.white,
-                    elevation: 100,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(100)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Icon(
-                        _favourite ? Icons.favorite : Icons.favorite_border,
-                        color: Colors.black54,
-                        size: SizeConfig.screenWidth * 0.05,
-                      ),
-                    )),
+              Container(
+                alignment: Alignment.topRight,
+                width: double.maxFinite,
+                margin: EdgeInsets.only(
+                    top: SizeConfig.screenHeight * 0.0125,
+                    right: SizeConfig.screenWidth * 0.025),
+                child: InkWell(
+                  onTap: () => _addToFavourite(),
+                  child: Material(
+                      color: Colors.white,
+                      elevation: 100,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Icon(
+                          _favourite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.black54,
+                          size: SizeConfig.screenWidth * 0.05,
+                        ),
+                      )),
+                ),
               ),
-            ),
-          ]),
-          _buildList(),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Text(
-                    "Yue Chuan @ The Kingsburry",
-                    style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 4.576,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    overflow: TextOverflow.ellipsis,
+              Container(
+                height: SizeConfig.screenHeight*0.15,
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  width: double.maxFinite,
+                  height: SizeConfig.screenHeight*0.063,
+                  child: _buildList(),
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.5)
                   ),
                 ),
-                Expanded(
+              ),
+
+            ]),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8,0,8,0),
+              child: Text(
+                "Yue Chuan @ The Kingsburry",
+                style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 4.576,
+                  fontWeight: FontWeight.bold,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      "Colombo One - Rs 10000 for 2",
+                      style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 4.25,
+                        color: Colors.black45,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Expanded(
 //                  flex: 1,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: SizeConfig.screenWidth * 0.05,
-                        color: Colors.red,
-                      ),
-                      Text(
-                        "5.0",
-                        style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-//                          fontWeight: FontWeight.bold,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right:2.0),
+                          child: Icon(
+                            Icons.star,
+                            size: SizeConfig.screenWidth * 0.035,
+                            color: Colors.red,
+                          ),
                         ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Flexible(
-                        child: Text(
-                          "(40)",
+                        Text(
+                          "5.0",
                           style: TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                            color: Colors.black45,
 //                          fontWeight: FontWeight.bold,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Text(
-              "Colombo One - Rs 10000 for 2",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 4.25,
-                color: Colors.black45,
+                        Flexible(
+                          child: Text(
+                            "(40)",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                              color: Colors.black45,
+//                          fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-            child: Text(
-              "Thai - Chinese - Italian",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 4.25,
-                color: Colors.black45,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+              child: Text(
+                "Thai - Chinese - Italian",
+                style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 4.25,
+                  color: Colors.black45,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
-        ],
-      ),
-    ));
+          ],
+        ),
+      )),
+    );
   }
 
   Widget _buildList() {
@@ -184,12 +203,12 @@ class _RestaurantItemState extends State<RestaurantItem> {
           itemCount: 15,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(right: 2, left: 2),
+              padding: const EdgeInsets.only(right: 2, left: 2, bottom: 3),
               child: Container(
-                height: SizeConfig.screenWidth * 0.11,
-                width: SizeConfig.screenWidth * 0.11,
+                height: SizeConfig.screenWidth * 0.05,
+                width: SizeConfig.screenWidth * 0.15,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
+                  borderRadius: BorderRadius.circular(10),
                   color: Colors.red[700],
                 ),
                 child: Center(
