@@ -1,11 +1,15 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offpeak/models/restaurant.dart';
+import 'package:offpeak/pages/restaurants.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
 import '../utils/size_config.dart';
+import 'main_menu.dart';
 
-class Scan extends StatefulWidget{
+class Scan extends StatefulWidget {
+  static const routeName = "scan";
   @override
   _Scan createState() => _Scan();
 }
@@ -18,6 +22,11 @@ class _Scan extends State<Scan> {
     String cameraScanResult = await scanner.scan();
     setState(() {
       scanResult = cameraScanResult;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MainMenuPage(),
+          ));
     });
   }
 
@@ -28,12 +37,13 @@ class _Scan extends State<Scan> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(scanResult),
+            Text(""),
             SizedBox(height: 20),
             Container(
               height: SizeConfig.screenHeight * 0.075,
               child: FlatButton(
-                padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 8.0),
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.blockSizeHorizontal * 8.0),
                 onPressed: scanQRCode,
                 shape: RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(10.0),
@@ -54,8 +64,7 @@ class _Scan extends State<Scan> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: SizeConfig.blockSizeHorizontal * 5.5
-                          ),
+                              fontSize: SizeConfig.blockSizeHorizontal * 5.5),
                         )
                       ],
                     ),

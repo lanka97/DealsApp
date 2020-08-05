@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 
 class RestaurantItem extends StatefulWidget {
@@ -15,6 +16,15 @@ class _RestaurantItemState extends State<RestaurantItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
+        child: InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewRestaurant(),
+          ),
+        );
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -81,20 +91,24 @@ class _RestaurantItemState extends State<RestaurantItem> {
                         size: SizeConfig.screenWidth * 0.05,
                         color: Colors.red,
                       ),
-                      Text("5.0",
+                      Text(
+                        "5.0",
+                        style: TextStyle(
+                          fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+//                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Flexible(
+                        child: Text(
+                          "(40)",
                           style: TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                            color: Colors.black45,
 //                          fontWeight: FontWeight.bold,
                           ),
-                        overflow: TextOverflow.ellipsis,),
-                      Flexible(
-                        child: Text("(40)",
-                            style: TextStyle(
-                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                              color: Colors.black45,
-//                          fontWeight: FontWeight.bold,
-                            ),
-                          overflow: TextOverflow.ellipsis,),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),
@@ -126,7 +140,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
           ),
         ],
       ),
-    );
+    ));
   }
 
   Widget _buildList() {
@@ -164,40 +178,38 @@ class _RestaurantItemState extends State<RestaurantItem> {
 //    );
 
     return Container(
-      height: SizeConfig.screenWidth * 0.15,
+      height: SizeConfig.screenWidth * 0.12,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 15,
           itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(4.0, 8.0, 4.0, 8.0),
-                  child: Container(
-                    height: SizeConfig.screenWidth * 0.1,
-                    width: SizeConfig.screenWidth * 0.11,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.red[700],
-                    ),
-                    child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("10.30",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: SizeConfig.blockSizeHorizontal * 3)),
-                            Text("20%",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: SizeConfig.blockSizeHorizontal * 4.5,
-                                    fontWeight: FontWeight.bold))
-                          ],
-                        )),
-                  ),
-                );
-          }
-
-      ),
+            return Padding(
+              padding: const EdgeInsets.only(right: 2, left: 2),
+              child: Container(
+                height: SizeConfig.screenWidth * 0.11,
+                width: SizeConfig.screenWidth * 0.11,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Colors.red[700],
+                ),
+                child: Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("10.30",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: SizeConfig.blockSizeHorizontal * 3)),
+                    Text("20%",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                            fontWeight: FontWeight.bold))
+                  ],
+                )),
+              ),
+            );
+          }),
     );
   }
 

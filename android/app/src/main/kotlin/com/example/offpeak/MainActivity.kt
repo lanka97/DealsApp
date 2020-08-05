@@ -1,4 +1,4 @@
-package com.example.offpeak
+package com.happyhourapppvtltd.happyhour
 
 import io.flutter.embedding.android.FlutterActivity
 
