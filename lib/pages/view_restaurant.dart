@@ -20,6 +20,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   TabController _mainTabController ;
   int _tabIndex;
   int _selectedMenuIndex;
+  static const _fontName = "HelveticaNeu";
   @override
   void initState() {
     super.initState();
@@ -70,19 +71,23 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         children: <Widget>[
           Row(
               children: <Widget>[
-                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 5.5,color: darkBlue),)),
-                Icon(Icons.star,color: Color(0xFFCC070B),),
-                Text("${_restaurant.ratings}",style: TextStyle(color: darkBlue)),
-                Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey),),
+                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 5.5,color: darkBlue,fontFamily: _fontName),)),
               ],
             ),
           SizedBox(height: SizeConfig.blockSizeVertical,),
-          Text(_restaurant.promotion,style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color:blueGrey),),
+          Row(
+            children: <Widget>[
+              Expanded(child: Text(_restaurant.promotion,style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color:blueGrey),)),
+              Icon(Icons.star,color: Color(0xFFCC070B),),
+              Text("${_restaurant.ratings}",style: TextStyle(color: darkBlue,fontFamily: _fontName)),
+              Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey,fontFamily: _fontName),),
+            ],
+          ),
           SizedBox(height: SizeConfig.blockSizeVertical * 0.5,),
           Text(_restaurant.categories.join(", "),style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color: blueGrey),),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Container(
-            height: SizeConfig.blockSizeHorizontal * 15,
+            height: SizeConfig.blockSizeHorizontal * 13,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -151,16 +156,15 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     return Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Container(
-                height: SizeConfig.blockSizeHorizontal * 15,
-                width: SizeConfig.blockSizeHorizontal * 23,
+                width: SizeConfig.blockSizeHorizontal * 20,
                 child: Card(
                   color: color,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 5),),
-                      Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4),),
+                      Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 3.5,fontFamily: _fontName),),
+                      Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontFamily: _fontName),),
                     ],
                   ),
                 ),
@@ -169,8 +173,8 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   }
 
   Widget _textFieldWidget(_TextField type){
-    final hintStyle = Theme.of(context).textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold);
-    final textStyle = hintStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold,color: Colors.black);
+    final hintStyle = Theme.of(context).textTheme.headline3.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8,fontWeight: FontWeight.w500);
+    final textStyle = hintStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8,fontWeight: FontWeight.w500,color: Colors.black);
     switch (type){
       case _TextField.Date:
         return TextField(
@@ -329,11 +333,11 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
       ),
     ];
 
-     final unselectedLabelColor = Color(0xFF4D4E74);
+     final unselectedLabelColor = Color(0xFF000000);
     final indicatorColor = Color(0xFFDF8B37);
     final labelColor = indicatorColor;
     final tabTextStyle = Theme.of(context).textTheme.headline6.copyWith(
-      fontWeight: FontWeight.w900
+      fontWeight: FontWeight.w700,fontFamily: _fontName
     );
     return  Column(
       children: <Widget>[
@@ -386,8 +390,8 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                     itemCount: restaurantMenuList.length,
                     itemBuilder: (BuildContext context, int index) {
                       final menu = restaurantMenuList[index];
-                      final selectedStyle = normalTextTheme.copyWith(fontSize: menuTextSize * 0.8,color: Colors.white);
-                      final unselectedStyle = normalTextTheme.copyWith(fontSize: menuTextSize,color: Color(0xFF8F9199));
+                      final selectedStyle = normalTextTheme.copyWith(fontSize: menuTextSize,color: Colors.white,fontFamily: _fontName);
+                      final unselectedStyle = selectedStyle.copyWith(fontSize: menuTextSize,color: Color(0xFF8F9199));
                       final style = _selectedMenuIndex == index ? selectedStyle:unselectedStyle;
                       final child = GestureDetector(
                           onTap: (){
@@ -396,9 +400,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                             });
                           },
                           child: Container(
-                              height: menuTextSize * 2.5,
-                              padding: const EdgeInsets.only(left: 5,right: 5,top: 5,bottom: 5),
-                              alignment: Alignment.center,
+                            alignment: Alignment.center,
                               child: Text(menu.menuName,style: style,)));
                       if(_selectedMenuIndex == index){
                         return Card(
@@ -407,15 +409,21 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25)
                           ),
-                          child: child,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(10,0,10,0),
+                            child: child,
+                          ),
                         );
                       }
-                      return child;
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 12,right: 12),
+                        child: child,
+                      );
                     },
                   ),
                 ),
                 SizedBox(width: SizeConfig.blockSizeHorizontal *1.5,),
-                Text("${_restaurant.restaurantMenuList[_selectedMenuIndex].offer} %",style: textTheme.headline6.copyWith(color: Color(0xFFDF8B37)),)
+                Text("${_restaurant.restaurantMenuList[_selectedMenuIndex].offer.toStringAsFixed(0)}%",style: textTheme.headline6.copyWith(color: Color(0xFFDF8B37),fontFamily: _fontName),)
               ],
             ),
           ),
@@ -447,7 +455,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.noteTwo,style: normalTextTheme,),
           SizedBox(height: SizeConfig.blockSizeVertical,),
-          Text("Special Conditions",style: normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 6,fontWeight: FontWeight.w900,color: Color(0xFF4A4B71)),),
+          Text("Special Conditions",style: normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 6,fontWeight: FontWeight.w900,color: Color(0xFF4A4B71),fontFamily: _fontName),),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.specialCondition,style: normalTextTheme,),
         ],
@@ -542,12 +550,14 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
       padding: EdgeInsets.only(top: 5,bottom: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          CircleAvatar(
-            child: ClipRRect(
-              borderRadius: radius,
-                child: Image.network(profile)),
+          Container(
+            child: CircleAvatar(
+              child: ClipRRect(
+                borderRadius: radius,
+                  child: Image.network(profile)),
+            ),
           ),
           SizedBox(width: SizeConfig.blockSizeHorizontal *3,),
           Expanded(
