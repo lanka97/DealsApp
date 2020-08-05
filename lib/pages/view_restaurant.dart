@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:offpeak/models/restaurant.dart';
+import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
 class ViewRestaurant extends StatefulWidget {
@@ -62,14 +63,14 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         color: greyColor
     );
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
               children: <Widget>[
-                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 6,color: darkBlue),)),
+                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 5.5,color: darkBlue),)),
                 Icon(Icons.star,color: Color(0xFFCC070B),),
                 Text("${_restaurant.ratings}",style: TextStyle(color: darkBlue)),
                 Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey),),
@@ -131,6 +132,9 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                       alignment: Alignment.center,
                       child: _textFieldWidget(_TextField.Voucher),
                     ),
+                    Container(
+                      child: _reserveButton(),
+                    ),
                   ],
                 ),
               ),
@@ -143,22 +147,22 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   }
 
   Padding _promotionListItem(Promotion promotion, TextTheme textTheme, Color redColor) {
+    final color = double.parse(promotion.percentage.replaceAll("%", '').trim())>15.0? redColor: Colors.deepOrange;
     return Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Container(
                 height: SizeConfig.blockSizeHorizontal * 15,
-                width: SizeConfig.blockSizeHorizontal * 15,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 5),),
-                    Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4),),
-                  ],
-                ),
-                decoration: BoxDecoration(
-                  color: redColor,
-                  shape: BoxShape.circle
+                width: SizeConfig.blockSizeHorizontal * 23,
+                child: Card(
+                  color: color,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 5),),
+                      Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4),),
+                    ],
+                  ),
                 ),
               ),
             );
@@ -172,14 +176,24 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         return TextField(
           style: textStyle,
           keyboardType: TextInputType.datetime,
-          decoration: InputDecoration.collapsed(hintText: "Add Date",hintStyle: hintStyle),
+          decoration: InputDecoration(
+              prefixIcon: Icon(Icons.date_range),
+              hintText: "Add Date",hintStyle: hintStyle,
+              border: InputBorder.none
+
+          ),
         );
         break;
       case _TextField.Guests:
         return TextField(
           style: textStyle,
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration.collapsed(hintText: "Add Guests",hintStyle: hintStyle),
+          keyboardType: TextInputType.datetime,
+          decoration: InputDecoration(
+              prefixIcon: Icon(Icons.confirmation_number),
+              hintText: "Add Guests",hintStyle: hintStyle,
+              border: InputBorder.none
+
+          ),
         );
         break;
       case _TextField.Voucher:
@@ -193,11 +207,56 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     }
   }
 
+  Widget _reserveButton() {
+    return Container(
+      height: SizeConfig.screenHeight * 0.055,
+      child: FlatButton(
+        padding: EdgeInsets.symmetric(
+            horizontal: SizeConfig.blockSizeHorizontal * 20.0),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Reservation(),
+            ),
+          );
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+        ),
+        child: Ink(
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+          ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  "Reserve Now",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: SizeConfig.blockSizeHorizontal * 5.5),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockVertical * 3;
+    final topPosition = SizeConfig.safeBlockVertical * 3.5;
+    final iconSize = 20.0;
     return Container(
       width: double.infinity,
-      height: SizeConfig.blockSizeVertical * 35,
+      height: SizeConfig.blockSizeVertical * 32,
       child: Stack(
         children: <Widget>[
           Container(
@@ -210,14 +269,12 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           Positioned(
             top: topPosition,
             child: RawMaterialButton(
-              onPressed: () {
-                //TODO: navigator pop
-              },
+              onPressed: () => Navigator.pop(context),
               elevation: 2.0,
               fillColor: Colors.white,
               child: Icon(
                 Icons.arrow_back_ios,
-                size: 20.0,
+                size: iconSize,
               ),
               shape: CircleBorder(),
             ),
@@ -233,7 +290,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
               fillColor: Colors.white,
               child: Icon(
                 Icons.share,
-                size: 20.0,
+                size: iconSize,
               ),
               shape: CircleBorder(),
             ),
@@ -249,7 +306,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
               fillColor: Colors.white,
               child: Icon(
                 Icons.favorite_border,
-                size: 20.0,
+                size: iconSize,
               ),
               shape: CircleBorder(),
             ),
@@ -309,7 +366,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     final textTheme = Theme.of(context).textTheme;
     final restaurantMenuList =_restaurant.restaurantMenuList;
     final menuTextSize = SizeConfig.blockSizeHorizontal * 3.7;
-    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w600,fontSize: SizeConfig.blockSizeHorizontal * 4);
+    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.normal,fontSize: SizeConfig.blockSizeHorizontal * 4);
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -318,7 +375,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           Text(_restaurant.menuText,style: normalTextTheme,),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Container(
-            height: menuTextSize * 1.8,
+            height: menuTextSize * 2.5,
             alignment: Alignment.center,
             child: Row(
               children: <Widget>[
@@ -339,14 +396,14 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                             });
                           },
                           child: Container(
-                              height: menuTextSize * 1.8,
-                              padding: const EdgeInsets.only(left: 5,right: 5),
+                              height: menuTextSize * 2.5,
+                              padding: const EdgeInsets.only(left: 5,right: 5,top: 5,bottom: 5),
                               alignment: Alignment.center,
                               child: Text(menu.menuName,style: style,)));
                       if(_selectedMenuIndex == index){
                         return Card(
                           color: Colors.black,
-                          elevation: 4,
+                          elevation: 2,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25)
                           ),
@@ -369,7 +426,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
             itemCount: restaurantMenuList[_selectedMenuIndex].restaurantMenuItems.length,
             itemBuilder: (context, index) {
               final menu = restaurantMenuList[_selectedMenuIndex].restaurantMenuItems[index];
-              final textStyle = normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.7,fontWeight: FontWeight.w700);
+              final textStyle = normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.7,fontWeight: FontWeight.normal);
               final discount = restaurantMenuList[_selectedMenuIndex].offer;
               return Padding(
                 padding: const EdgeInsets.only(top:5),
@@ -400,7 +457,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   Widget _secondTabView(){
     final textTheme = Theme.of(context).textTheme;
     final normalTextSize =SizeConfig.blockSizeHorizontal * 4;
-    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w600,fontSize: normalTextSize);
+    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.normal,fontSize: normalTextSize);
     final titleTextTheme = normalTextTheme.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 6,color: Color(0xFF4A4B71));
     return Container(
       child: Column(
@@ -451,7 +508,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   Widget _topTextRowAbout(String name,List<String> list){
     final textTheme = Theme.of(context).textTheme;
     final normalTextSize =SizeConfig.blockSizeHorizontal * 4;
-    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.w600,fontSize: normalTextSize);
+    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.normal,fontSize: normalTextSize);
     final topSpacing = normalTextSize * 7;
     return           Row(
       children: <Widget>[
@@ -499,7 +556,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(name,style: textStyle,),
-                Text(rate,style: textStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3,fontWeight: FontWeight.normal),),
+                Text(rate,style: textStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.7,fontWeight: FontWeight.normal),),
               ],
             ),
           )
