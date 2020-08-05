@@ -26,11 +26,13 @@ class Restaurant{
 
   List<String> categories = ["Chinese","Thai","Italian"];
   List<Promotion> promotionList = [
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
-    Promotion(time: "10:30",percentage: "20 %"),
+    Promotion(time: "10:30",percentage: "20%"),
+    Promotion(time: "10:30",percentage: "20%"),
+    Promotion(time: "10:30",percentage: "20%"),
+    Promotion(time: "10:30",percentage: "20%"),
+    Promotion(time: "10:30",percentage: "20%"),
+    Promotion(time: "10:30",percentage: "20%"),
+    Promotion(time: "10:30",percentage: "20%"),
   ];
   List<RestaurantMenu> restaurantMenuList = [
     RestaurantMenu(

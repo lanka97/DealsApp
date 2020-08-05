@@ -70,9 +70,31 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           Row(
               children: <Widget>[
                 Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 6,color: darkBlue),)),
-                Icon(Icons.star,color: Color(0xFFCC070B),),
-                Text("${_restaurant.ratings}",style: TextStyle(color: darkBlue)),
-                Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey),),
+                Container(
+                    height: SizeConfig.blockSizeHorizontal * 6,
+                    alignment: Alignment.bottomCenter,
+                    child: Icon(Icons.star,color: Color(0xFFCC070B),)),
+                Container(
+                  height: SizeConfig.blockSizeHorizontal * 6,
+                alignment: Alignment.bottomCenter,
+                child: RichText(
+                    text: TextSpan(
+                        style: TextStyle(color: darkBlue),
+                        children: [
+                          TextSpan(text: "${_restaurant.ratings}"),
+                          TextSpan(text: "(${_restaurant.voteCount})",style: TextStyle(color: blueGrey),),
+                        ]
+                    ),
+                  ),
+                ),
+//                Container(
+//                    height: SizeConfig.blockSizeHorizontal * 6,
+//                    alignment: Alignment.bottomRight,
+//                    child: Text("",style: TextStyle(color: darkBlue))),
+//                Container(
+//                  height: SizeConfig.blockSizeHorizontal * 6,
+//                    alignment: Alignment.bottomRight,
+//                    child: Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey),)),
               ],
             ),
           SizedBox(height: SizeConfig.blockSizeVertical,),
@@ -146,14 +168,14 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     return Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Container(
-                height: SizeConfig.blockSizeHorizontal * 15,
-                width: SizeConfig.blockSizeHorizontal * 15,
+                height: SizeConfig.blockSizeHorizontal * 14,
+                width: SizeConfig.blockSizeHorizontal * 14,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 5),),
-                    Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4),),
+                    Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4),),
+                    Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 3.5),),
                   ],
                 ),
                 decoration: BoxDecoration(
@@ -172,14 +194,24 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         return TextField(
           style: textStyle,
           keyboardType: TextInputType.datetime,
-          decoration: InputDecoration.collapsed(hintText: "Add Date",hintStyle: hintStyle),
+          decoration: InputDecoration(
+            prefixIcon: Icon(Icons.date_range),
+              hintText: "Add Date",hintStyle: hintStyle,
+            border: InputBorder.none
+
+          ),
         );
         break;
       case _TextField.Guests:
         return TextField(
           style: textStyle,
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration.collapsed(hintText: "Add Guests",hintStyle: hintStyle),
+          keyboardType: TextInputType.datetime,
+          decoration: InputDecoration(
+              prefixIcon: Icon(Icons.confirmation_number),
+              hintText: "Add Guests",hintStyle: hintStyle,
+              border: InputBorder.none
+
+          ),
         );
         break;
       case _TextField.Voucher:
@@ -358,7 +390,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                   ),
                 ),
                 SizedBox(width: SizeConfig.blockSizeHorizontal *1.5,),
-                Text("${_restaurant.restaurantMenuList[_selectedMenuIndex].offer} %",style: textTheme.headline6.copyWith(color: Color(0xFFDF8B37)),)
+                Text("${_restaurant.restaurantMenuList[_selectedMenuIndex].offer}%",style: textTheme.headline6.copyWith(color: Color(0xFFDF8B37)),)
               ],
             ),
           ),
