@@ -18,6 +18,9 @@ class _RestaurantItemState extends State<RestaurantItem> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
       child: Card(
+          borderOnForeground: false,
+          elevation: 0,
+          shadowColor: Colors.white,
           child: InkWell(
         onTap: () {
           Navigator.push(
@@ -32,13 +35,13 @@ class _RestaurantItemState extends State<RestaurantItem> {
           children: [
             Stack(children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(0),
                 child: Image(
                   image: AssetImage(
                     'assets/images/img.jpg',
                   ),
                   width: SizeConfig.screenWidth * 0.98,
-                  height: SizeConfig.screenHeight * 0.15,
+                  height: SizeConfig.screenHeight * 0.2,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -66,13 +69,16 @@ class _RestaurantItemState extends State<RestaurantItem> {
                 ),
               ),
               Container(
-                height: SizeConfig.screenHeight*0.15,
+                height: SizeConfig.screenHeight*0.2,
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   alignment: Alignment.bottomCenter,
                   width: double.maxFinite,
                   height: SizeConfig.screenHeight*0.063,
-                  child: _buildList(),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 3.0),
+                    child: _buildList(),
+                  ),
                   decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.5)
                   ),
@@ -81,27 +87,28 @@ class _RestaurantItemState extends State<RestaurantItem> {
 
             ]),
             Padding(
-              padding: const EdgeInsets.fromLTRB(8,0,8,0),
+              padding: const EdgeInsets.fromLTRB(4,0,4,0),
               child: Text(
                 "Yue Chuan @ The Kingsburry",
                 style: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 4.576,
+                  fontSize: SizeConfig.blockSizeHorizontal * 5,
                   fontWeight: FontWeight.bold,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+              padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
               child: Row(
                 children: [
                   Expanded(
                     flex: 3,
                     child: Text(
-                      "Colombo One - Rs 10000 for 2",
+                      "Colombo 01 | Rs 10000 for 2",
                       style: TextStyle(
                         fontSize: SizeConfig.blockSizeHorizontal * 4.25,
                         color: Colors.black45,
+                        height: 1.05,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -146,12 +153,13 @@ class _RestaurantItemState extends State<RestaurantItem> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+              padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
               child: Text(
-                "Thai - Chinese - Italian",
+                "Thai | Chinese | Italian",
                 style: TextStyle(
                   fontSize: SizeConfig.blockSizeHorizontal * 4.25,
                   color: Colors.black45,
+                  height: 1.05,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
@@ -206,7 +214,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
               padding: const EdgeInsets.only(right: 2, left: 2, bottom: 3),
               child: Container(
                 height: SizeConfig.screenWidth * 0.05,
-                width: SizeConfig.screenWidth * 0.15,
+                width: SizeConfig.screenWidth * 0.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.red[700],
@@ -218,11 +226,12 @@ class _RestaurantItemState extends State<RestaurantItem> {
                     Text("10.30",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: SizeConfig.blockSizeHorizontal * 3)),
+                            fontSize: SizeConfig.blockSizeHorizontal * 4)),
                     Text("20%",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                            fontSize: SizeConfig.blockSizeHorizontal * 5,
+                            height: 1,
                             fontWeight: FontWeight.bold))
                   ],
                 )),
