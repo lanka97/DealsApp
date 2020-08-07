@@ -14,7 +14,7 @@ class Restaurant {
       "Promotions cannot be applied with any other in-house promotions. Please refer to the special condition bellow for details. Promotions cannot be applied with any other in-house promotions. Please refer to the special condition bellow for details.";
 
   String about =
-      "The Test Resturant is one of the most reputed restaurant in Sri Lanka. Test is Chinese restaurant and there are any many other dine-in restaurants as well. This is must visit restaurant in our hotel. The Kingsburry is one of the most reputed restaurant in Sri Lanka. Test Resturant is Chinese restaurant and there are any many other dine-in restaurants as well. This is must visit restaurant in our hotel. ";
+      "The Test Resturant is one of the most reputed restaurant in Sri Lanka. Test is Chinese restaurant and there are any many other dine-in restaurants as well. This is must visit restaurant in our hotel. Test is one of the most reputed restaurant in Sri Lanka. Test Resturant is Chinese restaurant and there are any many other dine-in restaurants as well. This is must visit restaurant in our hotel. ";
   List<String> atmospheres = ['Family', 'Friends', 'Large Parties'];
   List<String> facilities = ['WiFi', "Air Conditioning"];
   List<String> payment = ['Cash', 'MasterCard', 'Frimi', 'VISA'];
