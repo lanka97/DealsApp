@@ -15,132 +15,127 @@ class _RestaurantItemState extends State<RestaurantItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        child: InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ViewRestaurant(),
-          ),
-        );
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image(
-                image: AssetImage(
-                  'assets/images/img.jpg',
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+      child: Card(
+          borderOnForeground: false,
+          elevation: 0,
+          shadowColor: Colors.white,
+          child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ViewRestaurant(),
+            ),
+          );
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image(
+                  image: AssetImage(
+                    'assets/images/img.jpg',
+                  ),
+                  width: SizeConfig.screenWidth * 0.98,
+                  height: SizeConfig.screenHeight * 0.22,
+                  fit: BoxFit.cover,
                 ),
-                width: SizeConfig.screenWidth * 0.98,
-                height: SizeConfig.screenHeight * 0.15,
-                fit: BoxFit.cover,
+              ),
+              Container(
+                alignment: Alignment.topRight,
+                width: double.maxFinite,
+                margin: EdgeInsets.only(
+                    top: SizeConfig.screenHeight * 0.0125,
+                    right: SizeConfig.screenWidth * 0.025),
+                child: InkWell(
+                  onTap: () => _addToFavourite(),
+                  child: Material(
+                      color: Colors.white,
+                      elevation: 100,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Icon(
+                          _favourite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.black54,
+                          size: SizeConfig.screenWidth * 0.05,
+                        ),
+                      )),
+                ),
+              ),
+              Container(
+                height: SizeConfig.screenHeight*0.22,
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  width: double.maxFinite,
+                  height: SizeConfig.screenHeight*0.067,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 3.0),
+                    child: _buildList(),
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.5)
+                  ),
+                ),
+              ),
+
+            ]),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4,0,4,0),
+              child: Text(
+                "Test Resturant @ Colombo",
+                style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 5,
+                  fontWeight: FontWeight.bold,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
-            Container(
-              alignment: Alignment.topRight,
-              width: double.maxFinite,
-              margin: EdgeInsets.only(
-                  top: SizeConfig.screenHeight * 0.0125,
-                  right: SizeConfig.screenWidth * 0.025),
-              child: InkWell(
-                onTap: () => _addToFavourite(),
-                child: Material(
-                    color: Colors.white,
-                    elevation: 100,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(100)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Icon(
-                        _favourite ? Icons.favorite : Icons.favorite_border,
-                        color: Colors.black54,
-                        size: SizeConfig.screenWidth * 0.05,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      "Colombo 01  |  Rs 1000 for 2",
+                      style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                        color: Color(0xFF4a4c4f),
+                        height: 1.05,
                       ),
-                    )),
-              ),
-            ),
-          ]),
-          _buildList(),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Text(
-                    "Yue Chuan @ The Kingsburry",
-                    style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 4.576,
-                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    overflow: TextOverflow.ellipsis,
                   ),
+                  Icon(Icons.star,color: Color(0xFFCC070B),),
+                  Text("5.0",style: TextStyle(color: Color(0xFF4A4B71)),),
+                  Text("(40)",style: TextStyle(color:Color(0xFFABB5CD)),),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
+              child: Text(
+                "Thai | Chinese | Italian",
+                style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                  color: Color(0xFF4a4c4f),
+                  height: 1.05,
                 ),
-                Expanded(
-//                  flex: 1,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: SizeConfig.screenWidth * 0.05,
-                        color: Colors.red,
-                      ),
-                      Text(
-                        "5.0",
-                        style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-//                          fontWeight: FontWeight.bold,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Flexible(
-                        child: Text(
-                          "(40)",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                            color: Colors.black45,
-//                          fontWeight: FontWeight.bold,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Text(
-              "Colombo One - Rs 10000 for 2",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 4.25,
-                color: Colors.black45,
+                overflow: TextOverflow.ellipsis,
               ),
-              overflow: TextOverflow.ellipsis,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-            child: Text(
-              "Thai - Chinese - Italian",
-              style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 4.25,
-                color: Colors.black45,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
-    ));
+            SizedBox(height: SizeConfig.blockSizeVertical * 0.5,),
+          ],
+        ),
+      )),
+    );
   }
 
   Widget _buildList() {
@@ -184,13 +179,13 @@ class _RestaurantItemState extends State<RestaurantItem> {
           itemCount: 15,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(right: 2, left: 2),
+              padding: const EdgeInsets.only(right: 2, left: 2, bottom: 3),
               child: Container(
-                height: SizeConfig.screenWidth * 0.11,
-                width: SizeConfig.screenWidth * 0.11,
+                height: SizeConfig.screenWidth * 0.05,
+                width: SizeConfig.screenWidth * 0.2,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: Colors.red[700],
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFCC070B),
                 ),
                 child: Center(
                     child: Column(
@@ -199,12 +194,13 @@ class _RestaurantItemState extends State<RestaurantItem> {
                     Text("10.30",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: SizeConfig.blockSizeHorizontal * 3)),
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.5)),
                     Text("20%",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: SizeConfig.blockSizeHorizontal * 4.0,
-                            fontWeight: FontWeight.bold))
+                            fontSize: SizeConfig.blockSizeHorizontal * 5,
+                            height: 1,
+                            fontWeight: FontWeight.w500))
                   ],
                 )),
               ),

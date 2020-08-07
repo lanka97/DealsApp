@@ -1,7 +1,7 @@
 class Restaurant {
   String image =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/800px-Good_Food_Display_-_NCI_Visuals_Online.jpg";
-  String name = "Yue Chuan@ The Kingsburry";
+  String name = "Test Resturant @ Colombo";
   double ratings = 5.0;
   int voteCount = 48;
   String promotion = "Colombo 1 Rs 1000 for 2";
