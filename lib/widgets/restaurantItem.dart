@@ -194,13 +194,13 @@ class _RestaurantItemState extends State<RestaurantItem> {
                     Text("10.30",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: SizeConfig.blockSizeHorizontal * 4)),
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.5)),
                     Text("20%",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: SizeConfig.blockSizeHorizontal * 5,
                             height: 1,
-                            fontWeight: FontWeight.bold))
+                            fontWeight: FontWeight.w500))
                   ],
                 )),
               ),
