@@ -14,8 +14,8 @@ class _MainMenuPageState extends State<MainMenuPage> {
   int _selectedTab = 0;
   ScrollController _scrollController;
 
-  final String _restaurant = "Yue Chuan";
-  final String _venue = "The Kingsburry";
+  final String _restaurant = "Test Resturant";
+  final String _venue = "Colombo";
 
   List<String> _tabHeadings = [
     'Top Picks',
