@@ -12,7 +12,7 @@ class Reservation extends StatefulWidget {
 }
 
 class _Reservation extends State<Reservation> {
-  Reserve reserve = new Reserve("Yue Chuan @ The Kingburry", "Tommorow",
+  Reserve reserve = new Reserve("Test Resturant @ Colombo", "Tommorow",
       "10.30 a.m.", "10%", "2", "Colombo-01");
 
   @override
@@ -244,7 +244,7 @@ class _Reservation extends State<Reservation> {
                                 SizedBox(width: SizeConfig.blockSizeHorizontal * 8,),
                                 Expanded(
                                   child: TextFormField(
-                                    initialValue: "+94",
+                                    //initialValue: "+94",
                                     style: TextStyle(
                                       fontSize:
                                           SizeConfig.blockSizeHorizontal * 4.5,

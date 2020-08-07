@@ -35,13 +35,13 @@ class _RestaurantItemState extends State<RestaurantItem> {
           children: [
             Stack(children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(0),
+                borderRadius: BorderRadius.circular(8),
                 child: Image(
                   image: AssetImage(
                     'assets/images/img.jpg',
                   ),
                   width: SizeConfig.screenWidth * 0.98,
-                  height: SizeConfig.screenHeight * 0.2,
+                  height: SizeConfig.screenHeight * 0.22,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -69,12 +69,12 @@ class _RestaurantItemState extends State<RestaurantItem> {
                 ),
               ),
               Container(
-                height: SizeConfig.screenHeight*0.2,
+                height: SizeConfig.screenHeight*0.22,
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   alignment: Alignment.bottomCenter,
                   width: double.maxFinite,
-                  height: SizeConfig.screenHeight*0.063,
+                  height: SizeConfig.screenHeight*0.067,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 3.0),
                     child: _buildList(),
@@ -89,7 +89,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
             Padding(
               padding: const EdgeInsets.fromLTRB(4,0,4,0),
               child: Text(
-                "Yue Chuan @ The Kingsburry",
+                "Test Resturant @ Colombo",
                 style: TextStyle(
                   fontSize: SizeConfig.blockSizeHorizontal * 5,
                   fontWeight: FontWeight.bold,
@@ -104,51 +104,18 @@ class _RestaurantItemState extends State<RestaurantItem> {
                   Expanded(
                     flex: 3,
                     child: Text(
-                      "Colombo 01 | Rs 10000 for 2",
+                      "Colombo 01  |  Rs 1000 for 2",
                       style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal * 4.25,
-                        color: Colors.black45,
+                        fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                        color: Color(0xFF4a4c4f),
                         height: 1.05,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Expanded(
-//                  flex: 1,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right:2.0),
-                          child: Icon(
-                            Icons.star,
-                            size: SizeConfig.screenWidth * 0.035,
-                            color: Colors.red,
-                          ),
-                        ),
-                        Text(
-                          "5.0",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-//                          fontWeight: FontWeight.bold,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Flexible(
-                          child: Text(
-                            "(40)",
-                            style: TextStyle(
-                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                              color: Colors.black45,
-//                          fontWeight: FontWeight.bold,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  Icon(Icons.star,color: Color(0xFFCC070B),),
+                  Text("5.0",style: TextStyle(color: Color(0xFF4A4B71)),),
+                  Text("(40)",style: TextStyle(color:Color(0xFFABB5CD)),),
                 ],
               ),
             ),
@@ -157,13 +124,14 @@ class _RestaurantItemState extends State<RestaurantItem> {
               child: Text(
                 "Thai | Chinese | Italian",
                 style: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 4.25,
-                  color: Colors.black45,
+                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                  color: Color(0xFF4a4c4f),
                   height: 1.05,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
+            SizedBox(height: SizeConfig.blockSizeVertical * 0.5,),
           ],
         ),
       )),
@@ -217,7 +185,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
                 width: SizeConfig.screenWidth * 0.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.red[700],
+                  color: Color(0xFFCC070B),
                 ),
                 child: Center(
                     child: Column(

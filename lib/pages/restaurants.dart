@@ -61,7 +61,7 @@ class _RestaurantsState extends State<Restaurants> {
                       )),
                 ),
                 Container(
-                  height: SizeConfig.screenHeight * 0.88,
+                  height: SizeConfig.screenHeight * 0.8725,
                   child: ListView.builder(
 //                        scrollDirection: Axis.horizontal,
 //                        physics: Scrollable(),
