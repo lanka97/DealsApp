@@ -28,9 +28,6 @@ class _MainMenuPageState extends State<MainMenuPage> {
 
   int _selectedMenuItem = 0;
 
-  static String _image =
-      "https://i.pinimg.com/736x/5e/2f/29/5e2f2901043dce299bc5ad1f49d3f6c7.jpg";
-  static String _name = "Chicken Hamburger";
   static String _description = "Fresh food with good taste and the best deal.";
 
 //  FoodItem menuFoodItem = FoodItem(
@@ -206,316 +203,301 @@ class _MainMenuPageState extends State<MainMenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          child: Column(
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Column(
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.blockSizeHorizontal * 4.0,
-                      vertical: SizeConfig.blockSizeHorizontal * 4.0,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: CircleAvatar(
-                            radius: SizeConfig.blockSizeHorizontal * 4.5,
-                            backgroundColor: Colors.grey.withOpacity(0.4),
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                              size: SizeConfig.blockSizeHorizontal * 5.0,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: SizeConfig.blockSizeHorizontal * 5.0),
-                        Expanded(
-                          child: Text(
-                            "Welcome to $_restaurant @ $_venue",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: SizeConfig.blockSizeHorizontal * 6.5,
-                                fontWeight: FontWeight.bold,
-                                height: SizeConfig.blockSizeHorizontal * 0.35),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(
-                    _tabHeadings.length,
-                    (index) => Container(
-                      width: SizeConfig.blockSizeVertical * 17.0,
-                      margin: index == _tabHeadings.length - 1
-                          ? EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 3.0,
-                              right: SizeConfig.blockSizeHorizontal * 5.0,
-                            )
-                          : EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 3.0,
-                              right: 0.0,
-                            ),
-                      child: FlatButton(
-                        onPressed: () {
-                          setState(() {
-                            _selectedMenuItem = index;
-                            print(_selectedMenuItem);
-                            tempMenuList = getSelectedList(_selectedMenuItem);
-                          });
-                        },
-                        color: _selectedMenuItem == index
-                            ? Colors.black
-                            : Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: Text(
-                          _tabHeadings[index],
-                          style: TextStyle(
-                            color: _selectedMenuItem == index
-                                ? Colors.white
-                                : Colors.black,
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ).toList(),
-                ),
-              ),
-              SizedBox(height: SizeConfig.blockSizeHorizontal * 5.0),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.blockSizeHorizontal * 5.0,
-                  ),
-                  child: GridView.count(
-                    childAspectRatio: (SizeConfig.blockSizeHorizontal /
-                        SizeConfig.blockSizeVertical *
-                        1.5),
-                    crossAxisCount: 2,
-                    scrollDirection: Axis.vertical,
-                    children: List.generate(
-                      tempMenuList.length,
-                      (index) => GestureDetector(
-                        onTap: () async {
-                          print(tempMenuList[index].id);
-                          await showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  content:
-                                      ItemDialog(foodItem: tempMenuList[index]),
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          SizeConfig.blockSizeHorizontal * 5.0,
-                                      vertical:
-                                          SizeConfig.blockSizeHorizontal * 4.0),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                      15.0,
-                                    ),
-                                  ),
-                                );
-                              });
-                        },
-                        child: MainMenuItem(menuFoodItem: tempMenuList[index]),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.blockSizeHorizontal * 5.0,
-                  vertical: SizeConfig.blockSizeHorizontal * 4.0,
+                padding: EdgeInsets.fromLTRB(
+                  SizeConfig.blockSizeHorizontal * 4.0,
+                  SizeConfig.blockSizeHorizontal * 10.0,
+                  SizeConfig.blockSizeHorizontal * 4.0,
+                  SizeConfig.blockSizeHorizontal * 0.0,
                 ),
-                child: FlatButton(
-                  onPressed: () async {
-                    await showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            content: Cart(),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 0.0, vertical: 10.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                          );
-                        });
-                    setState(() {});
-                    if (Order.order.orderConfirmed) {
-                      Order.order.orderConfirmed = false;
-                      await showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              content: Container(
-                                width: 420,
-                                height: SizeConfig.blockSizeVertical * 20,
-                                child: Column(
-                                  children: <Widget>[
-                                    Center(
-                                      child: Container(
-                                        margin: EdgeInsets.only(top: 25),
-                                        child: Text(
-                                          'Are you sure you want to order?',
-                                          style: TextStyle(
-                                            fontSize:
-                                                SizeConfig.blockSizeHorizontal *
-                                                    5.0,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: Container(
-                                        height:
-                                            SizeConfig.blockSizeVertical * 5.0,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            FlatButton(
-                                                child: Text(
-                                                  'Check the order',
-                                                  style: TextStyle(
-                                                    fontSize: SizeConfig
-                                                            .blockSizeHorizontal *
-                                                        3.5,
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                  ),
-                                                ),
-                                                onPressed: () async {
-                                                  await showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext
-                                                          context) {
-                                                        return AlertDialog(
-                                                          content: Cart(),
-                                                          contentPadding:
-                                                              EdgeInsets
-                                                                  .symmetric(
-                                                            horizontal: 0.0,
-                                                            vertical: SizeConfig
-                                                                    .blockSizeHorizontal *
-                                                                5.0,
-                                                          ),
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                              15.0,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      });
-                                                  if (Order
-                                                      .order.items.isEmpty) {
-                                                    Navigator.of(context).pop();
-                                                  }
-                                                }),
-                                            RaisedButton(
-                                              color: Color.fromRGBO(
-                                                30,
-                                                186,
-                                                66,
-                                                1,
-                                              ),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(22.0),
-                                              ),
-                                              child: Container(
-                                                height: SizeConfig
-                                                        .blockSizeVertical *
-                                                    5.0,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Icon(
-                                                      Icons.system_update_alt,
-                                                      color: Colors.white,
-                                                    ),
-                                                    Text(
-                                                      ' Order',
-                                                      style: TextStyle(
-                                                        fontSize: SizeConfig
-                                                                .blockSizeHorizontal *
-                                                            5.0,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.white,
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              onPressed: () {
-                                                Order.order.clear();
-                                                Navigator.of(context).pop();
-                                              },
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            );
-                          });
-                    }
-                    setState(() {});
-                  },
-                  color: Colors.red[800],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Container(
-                    width: SizeConfig.screenWidth,
-                    height: SizeConfig.blockSizeVertical * 7.0,
-                    child: Center(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: CircleAvatar(
+                        radius: SizeConfig.blockSizeHorizontal * 4.5,
+                        backgroundColor: Colors.grey.withOpacity(0.4),
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.black,
+                          size: SizeConfig.blockSizeHorizontal * 5.0,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: SizeConfig.blockSizeHorizontal * 3.0),
+                    Expanded(
                       child: Text(
-                        Order.order.items.isEmpty
-                            ? "Order"
-                            : "Order (${Order.order.items.length})",
+                        "Welcome to $_restaurant @ $_venue",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                          color: Colors.black,
+                          fontSize: SizeConfig.blockSizeHorizontal * 5.5,
                           fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ],
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(
+                  _tabHeadings.length,
+                  (index) => Container(
+                    child: FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          _selectedMenuItem = index;
+                          print(_selectedMenuItem);
+                          tempMenuList = getSelectedList(_selectedMenuItem);
+                        });
+                      },
+                      color: _selectedMenuItem == index
+                          ? Colors.black
+                          : Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: Text(
+                        _tabHeadings[index],
+                        style: TextStyle(
+                          color: _selectedMenuItem == index
+                              ? Colors.white
+                              : Colors.black,
+                          fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ).toList(),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.blockSizeHorizontal * 5.0,
+              ),
+              child: GridView.count(
+                padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2.0),
+                childAspectRatio: (0.95),
+                crossAxisCount: 2,
+                scrollDirection: Axis.vertical,
+                children: List.generate(
+                  tempMenuList.length,
+                  (index) => GestureDetector(
+                    onTap: () async {
+                      print(tempMenuList[index].id);
+                      await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content:
+                                  ItemDialog(foodItem: tempMenuList[index]),
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal:
+                                    SizeConfig.blockSizeHorizontal * 5.0,
+                                vertical: SizeConfig.blockSizeHorizontal * 4.0,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  15.0,
+                                ),
+                              ),
+                            );
+                          });
+                    },
+                    child: MainMenuItem(menuFoodItem: tempMenuList[index]),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.blockSizeHorizontal * 5.0,
+              vertical: SizeConfig.blockSizeHorizontal * 4.0,
+            ),
+            child: FlatButton(
+              onPressed: () async {
+                await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Cart(),
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 0.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                      );
+                    });
+                setState(() {});
+                if (Order.order.orderConfirmed) {
+                  Order.order.orderConfirmed = false;
+                  await showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content: Container(
+                            width: 420,
+                            height: SizeConfig.blockSizeVertical * 20,
+                            child: Column(
+                              children: <Widget>[
+                                Center(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 25),
+                                    child: Text(
+                                      'Are you sure you want to order?',
+                                      style: TextStyle(
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal *
+                                                5.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: Container(
+                                    height: SizeConfig.blockSizeVertical * 5.0,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        FlatButton(
+                                            child: Text(
+                                              'Check the order',
+                                              style: TextStyle(
+                                                fontSize: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    3.5,
+                                                decoration:
+                                                    TextDecoration.underline,
+                                              ),
+                                            ),
+                                            onPressed: () async {
+                                              await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                      content: Cart(),
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                        horizontal: 0.0,
+                                                        vertical: SizeConfig
+                                                                .blockSizeHorizontal *
+                                                            5.0,
+                                                      ),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          15.0,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  });
+                                              if (Order.order.items.isEmpty) {
+                                                Navigator.of(context).pop();
+                                              }
+                                            }),
+                                        RaisedButton(
+                                          color: Color.fromRGBO(
+                                            30,
+                                            186,
+                                            66,
+                                            1,
+                                          ),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(22.0),
+                                          ),
+                                          child: Container(
+                                            height:
+                                                SizeConfig.blockSizeVertical *
+                                                    5.0,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.system_update_alt,
+                                                  color: Colors.white,
+                                                ),
+                                                Text(
+                                                  ' Order',
+                                                  style: TextStyle(
+                                                    fontSize: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        5.0,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Order.order.clear();
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        );
+                      });
+                }
+                setState(() {});
+              },
+              color: Colors.red[800],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Container(
+                width: SizeConfig.screenWidth,
+                height: SizeConfig.blockSizeVertical * 7.0,
+                child: Center(
+                  child: Text(
+                    Order.order.items.isEmpty
+                        ? "Order"
+                        : "Order (${Order.order.items.length})",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
