@@ -33,56 +33,61 @@ class MainMenuItem extends StatelessWidget {
               ),
             ],
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.blockSizeHorizontal * 4.2,
-              vertical: SizeConfig.blockSizeVertical * 1.5,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  menuFoodItem.name,
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: SizeConfig.blockSizeHorizontal * 2.8,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  menuFoodItem.description,
-//                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: SizeConfig.blockSizeHorizontal * 2.7,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      "Rs " + menuFoodItem.price.toStringAsFixed(2),
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: SizeConfig.blockSizeHorizontal * 3.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
         ),
-        Positioned(
-          top: 0.0,
-          left: 0.0,
-          child: CircleAvatar(
-            radius: SizeConfig.blockSizeHorizontal * 13.0,
-            backgroundImage: NetworkImage(menuFoodItem.image),
-          ),
-        )
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            CircleAvatar(
+              radius: SizeConfig.blockSizeHorizontal * 11,
+              backgroundImage: NetworkImage(menuFoodItem.image),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                SizeConfig.blockSizeHorizontal * 6.2,
+                0,
+                SizeConfig.blockSizeHorizontal * 6.2,
+                SizeConfig.blockSizeHorizontal * 5.2,
+
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    menuFoodItem.name,
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: SizeConfig.blockSizeHorizontal * 2.8,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    menuFoodItem.description,
+//                  overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: SizeConfig.blockSizeHorizontal * 2.7,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        "Rs " + menuFoodItem.price.toStringAsFixed(2),
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: SizeConfig.blockSizeHorizontal * 3.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
