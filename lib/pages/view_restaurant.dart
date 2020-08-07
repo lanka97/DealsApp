@@ -84,14 +84,14 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                     TextSpan(
                       text:
                       'Colombo 1',
-                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF4a4c4f)),
                     ),
                     TextSpan(
                         text: '  |  ',
-                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),),
+                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF4a4c4f)),),
                     TextSpan(
                       text: 'Rs 1000 for 2 ',
-                        style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                        style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF4a4c4f)),
                     ),
                   ],
                 ),
@@ -102,8 +102,8 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
               Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey,fontFamily: _fontName),),
             ],
           ),
-          SizedBox(height: SizeConfig.blockSizeVertical * 0.5,),
-          Text(_restaurant.categories.join(" | "),style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),),
+          SizedBox(height: SizeConfig.blockSizeVertical * 0.2,),
+          Text(_restaurant.categories.join(" | "),style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF4a4c4f)),),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Container(
             height: SizeConfig.blockSizeHorizontal * 13,
