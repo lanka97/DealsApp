@@ -71,20 +71,39 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         children: <Widget>[
           Row(
               children: <Widget>[
-                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 5.5,color: darkBlue,fontFamily: _fontName),)),
+                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 5.5, fontFamily: _fontName),)),
               ],
             ),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Row(
             children: <Widget>[
-              Expanded(child: Text(_restaurant.promotion,style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color:blueGrey),)),
+              Expanded(child: RichText(
+//                textAlign: TextAlign.center,
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                      'Colombo 1',
+                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                    ),
+                    TextSpan(
+                        text: '  |  ',
+                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),),
+                    TextSpan(
+                      text: 'Rs 1000 for 2 ',
+                        style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                    ),
+                  ],
+                ),
+              ),),
+              //Expanded(child: Text(_restaurant.promotion,style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color:blueGrey),)),
               Icon(Icons.star,color: Color(0xFFCC070B),),
               Text("${_restaurant.ratings}",style: TextStyle(color: darkBlue,fontFamily: _fontName)),
               Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey,fontFamily: _fontName),),
             ],
           ),
           SizedBox(height: SizeConfig.blockSizeVertical * 0.5,),
-          Text(_restaurant.categories.join(", "),style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color: blueGrey),),
+          Text(_restaurant.categories.join(" | "),style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Container(
             height: SizeConfig.blockSizeHorizontal * 13,
@@ -154,9 +173,9 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   Padding _promotionListItem(Promotion promotion, TextTheme textTheme, Color redColor) {
     final color = double.parse(promotion.percentage.replaceAll("%", '').trim())>15.0? redColor: Colors.deepOrange;
     return Padding(
-              padding: const EdgeInsets.only(right: 5),
+              padding: const EdgeInsets.only(right: 2),
               child: Container(
-                width: SizeConfig.blockSizeHorizontal * 20,
+                width: SizeConfig.blockSizeHorizontal * 24,
                 child: Card(
                   color: color,
                   child: Column(
@@ -164,7 +183,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 3.5,fontFamily: _fontName),),
-                      Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontFamily: _fontName),),
+                      Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontFamily: _fontName, fontWeight: FontWeight.bold),),
                     ],
                   ),
                 ),
@@ -202,6 +221,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         break;
       case _TextField.Voucher:
         return TextField(
+          textAlign: TextAlign.center,
           style: textStyle,
           decoration: InputDecoration.collapsed(hintText: "Voucher Code (if any)",hintStyle: hintStyle),
         );
@@ -455,7 +475,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.noteTwo,style: normalTextTheme,),
           SizedBox(height: SizeConfig.blockSizeVertical,),
-          Text("Special Conditions",style: normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 6,fontWeight: FontWeight.w900,color: Color(0xFF4A4B71),fontFamily: _fontName),),
+          Text("Special Conditions",style: normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 6,fontWeight: FontWeight.w900,color: Color(0xFF000000),fontFamily: _fontName),),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.specialCondition,style: normalTextTheme,),
         ],
