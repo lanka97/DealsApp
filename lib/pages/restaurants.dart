@@ -52,13 +52,16 @@ class _RestaurantsState extends State<Restaurants> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Restaurants",
-                    style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 9,
-                      fontWeight: FontWeight.bold,
-                    )),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(13.0,10.0,10.0,5.0),
+                  child: Text("Restaurants",
+                      style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 9,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
                 Container(
-                  height: SizeConfig.screenHeight * 0.88,
+                  height: SizeConfig.screenHeight * 0.8725,
                   child: ListView.builder(
 //                        scrollDirection: Axis.horizontal,
 //                        physics: Scrollable(),
