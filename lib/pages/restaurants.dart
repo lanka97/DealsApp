@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
-import 'package:offpeak/pages/restaurantItem.dart';
+import 'package:offpeak/widgets/restaurantItem.dart';
 
 import '../utils/size_config.dart';
 

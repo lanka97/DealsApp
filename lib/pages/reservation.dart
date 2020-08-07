@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:offpeak/pages/scan.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/models/reserve.dart';
@@ -188,117 +189,123 @@ class _Reservation extends State<Reservation> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                'Name',
-                                style: TextStyle(
-                                  fontSize:
-                                      SizeConfig.blockSizeHorizontal * 4.5,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(
-                                width: SizeConfig.screenWidth * 0.6,
-                                height: SizeConfig.screenHeight * 0.05,
-                                child: TextField(
+                          Container(
+                            height: SizeConfig.screenHeight * 0.05,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Name',
                                   style: TextStyle(
                                     fontSize:
                                         SizeConfig.blockSizeHorizontal * 4.5,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      borderSide:
-                                          BorderSide(color: Colors.grey),
+                                ),
+                                SizedBox(width: SizeConfig.blockSizeHorizontal * 8,),
+                                Expanded(
+                                  child: TextField(
+                                    style: TextStyle(
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal * 4.5,
                                     ),
-                                    border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      borderSide:
-                                          new BorderSide(color: Colors.grey),
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10)),
+                                        borderSide:
+                                            BorderSide(color: Colors.grey),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10)),
+                                        borderSide:
+                                            new BorderSide(color: Colors.grey),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           SizedBox(height: SizeConfig.screenHeight * 0.01),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                'Phone',
-                                style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.blockSizeHorizontal * 4.5,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: SizeConfig.screenWidth * 0.6,
-                                height: SizeConfig.screenHeight * 0.05,
-                                child: TextFormField(
-                                  initialValue: "+94",
+                          Container(
+                            height: SizeConfig.screenHeight * 0.05,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Phone',
                                   style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.blockSizeHorizontal * 4.5,
-                                  ),
-                                  decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      borderSide:
-                                          BorderSide(color: Colors.grey),
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal * 4.5,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(width: SizeConfig.blockSizeHorizontal * 8,),
+                                Expanded(
+                                  child: TextFormField(
+                                    initialValue: "+94",
+                                    style: TextStyle(
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal * 4.5,
                                     ),
-                                    border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      borderSide:
-                                          new BorderSide(color: Colors.grey),
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10)),
+                                        borderSide:
+                                            BorderSide(color: Colors.grey),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10)),
+                                        borderSide:
+                                            new BorderSide(color: Colors.grey),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           SizedBox(height: SizeConfig.screenHeight * 0.01),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                'E-mail',
-                                style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.blockSizeHorizontal * 4.5,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: SizeConfig.screenWidth * 0.6,
-                                height: SizeConfig.screenHeight * 0.05,
-                                child: TextField(
+                          Container(
+                            height: SizeConfig.screenHeight * 0.05,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'E-mail',
                                   style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.blockSizeHorizontal * 4.5,
-                                  ),
-                                  decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      borderSide:
-                                          BorderSide(color: Colors.grey),
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal * 4.5,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(width: SizeConfig.blockSizeHorizontal * 8,),
+                                Expanded(
+                                  child: TextField(
+                                    style: TextStyle(
+                                      fontSize:
+                                          SizeConfig.blockSizeHorizontal * 4.5,
                                     ),
-                                    border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      borderSide:
-                                          new BorderSide(color: Colors.grey),
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10)),
+                                        borderSide:
+                                            BorderSide(color: Colors.grey),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10)),
+                                        borderSide:
+                                            new BorderSide(color: Colors.grey),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -307,18 +314,28 @@ class _Reservation extends State<Reservation> {
                 ),
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.02),
-              InkWell(
-                child: Text(
-                  "Signup",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.orange,
-                      fontWeight: FontWeight.bold,
-                      fontSize: SizeConfig.blockSizeHorizontal * 6.0),
-                ),
-                onTap: () {
-                  print("value of your text");
-                },
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Signup",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.bold,
+                            fontSize: SizeConfig.blockSizeHorizontal * 6.0),
+                      ),
+                    ),
+                    onTap: () {
+                      print("value of your text");
+                    },
+                  ),
+                ],
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.02),
               Container(
