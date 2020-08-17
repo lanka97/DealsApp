@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:offpeak/pages/hotels/view_hotel.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/pages/scan.dart';
 import 'package:offpeak/pages/view_restaurant.dart';
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(),
       routes: {
-        ViewRestaurant.routeName: (context) => ViewRestaurant(),
+        ViewRestaurant.routeName: (context) => ViewHotel(),
+        ViewHotel.routeName: (context) => ViewHotel(),
         Restaurants.routeName: (context) => Restaurants(),
         Reservation.routeName: (context) => Reservation(),
         Scan.routeName: (context) => Scan()

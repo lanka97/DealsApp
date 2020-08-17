@@ -391,6 +391,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     final restaurantMenuList =_restaurant.restaurantMenuList;
     final menuTextSize = SizeConfig.blockSizeHorizontal * 3.7;
     final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.normal,fontSize: SizeConfig.blockSizeHorizontal * 4);
+    final headlineTextTheme = normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 6,fontWeight: FontWeight.w900,color: Color(0xFF014895),fontFamily: _fontName);
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -475,7 +476,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.noteTwo,style: normalTextTheme,),
           SizedBox(height: SizeConfig.blockSizeVertical,),
-          Text("Special Conditions",style: normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 6,fontWeight: FontWeight.w900,color: Color(0xFF000000),fontFamily: _fontName),),
+          Text("Special Conditions",style: headlineTextTheme,),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.specialCondition,style: normalTextTheme,),
         ],
