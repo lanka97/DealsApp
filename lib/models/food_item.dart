@@ -4,6 +4,7 @@ class FoodItem {
   final String name;
   final String description;
   final double price;
+  final discount;
   final String category;
   final bool isTopPick;
 
@@ -13,6 +14,7 @@ class FoodItem {
       this.name,
       this.description,
       this.price,
+      this.discount,
       this.category,
       this.isTopPick});
 }

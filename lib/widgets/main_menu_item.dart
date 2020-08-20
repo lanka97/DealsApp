@@ -48,7 +48,6 @@ class MainMenuItem extends StatelessWidget {
                 0,
                 SizeConfig.blockSizeHorizontal * 6.2,
                 SizeConfig.blockSizeHorizontal * 5.2,
-
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,6 +87,29 @@ class MainMenuItem extends StatelessWidget {
             ),
           ],
         ),
+        menuFoodItem.discount > 0
+            ? Positioned(
+                top: SizeConfig.blockSizeHorizontal * 6.5,
+                right: SizeConfig.blockSizeHorizontal * 6.5,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.blockSizeHorizontal * 3.0,
+                      vertical: SizeConfig.blockSizeHorizontal),
+                  decoration: BoxDecoration(
+                    color: Colors.deepOrangeAccent,
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  ),
+                  child: Text(
+                    "${menuFoodItem.discount.toString()}%",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+            : SizedBox(),
       ],
     );
   }
