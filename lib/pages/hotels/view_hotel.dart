@@ -147,6 +147,7 @@ class _ViewHotelState extends State<ViewHotel> with SingleTickerProviderStateMix
           Container(
             child: ListView.builder(
                 shrinkWrap: true,
+                padding: EdgeInsets.zero,
                 physics: NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemCount: _hotel.hotelRooms.length,
@@ -529,6 +530,7 @@ class _ViewHotelState extends State<ViewHotel> with SingleTickerProviderStateMix
           ),
           ListView.builder(
           physics: NeverScrollableScrollPhysics(),
+    padding: EdgeInsets.zero,
     shrinkWrap: true,
             itemCount: hotelRoom.roomPromotion.length,
              itemBuilder: (BuildContext context, int index) => _roomPromotion(hotelRoom.roomPromotion[index]),
@@ -598,7 +600,9 @@ class _ViewHotelState extends State<ViewHotel> with SingleTickerProviderStateMix
     );
   }
   void _bottomSheet({@required Widget child,@required Widget title,double iconSize}){
-    _scaffoldKey.currentState.showBottomSheet((context) => Container(
+
+//    _scaffoldKey.currentState.
+    showModalBottomSheet(context:context,builder:(context) => Container(
       width: double.infinity,
       padding: const EdgeInsets.only(left: 10,bottom: 10,top: 10),
       child: Column(
