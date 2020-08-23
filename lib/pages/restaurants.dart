@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
-import 'package:offpeak/pages/restaurantItem.dart';
+import 'package:offpeak/widgets/restaurantItem.dart';
 
 import '../utils/size_config.dart';
 
@@ -61,7 +61,7 @@ class _RestaurantsState extends State<Restaurants> {
                       )),
                 ),
                 Container(
-                  height: SizeConfig.screenHeight * 0.88,
+                  height: SizeConfig.screenHeight * 0.8725,
                   child: ListView.builder(
 //                        scrollDirection: Axis.horizontal,
 //                        physics: Scrollable(),
