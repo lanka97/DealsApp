@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:offpeak/pages/hotels/view_hotel.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/pages/scan.dart';
+import 'package:offpeak/pages/spas.dart';
+import 'package:offpeak/pages/stays.dart';
 import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/pages/restaurants.dart';
@@ -56,6 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Restaurants();
+    return Stays();
   }
 }
