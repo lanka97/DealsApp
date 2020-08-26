@@ -610,17 +610,17 @@ class _ViewHotelState extends State<ViewHotel> with SingleTickerProviderStateMix
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              title,
-              Spacer(),
-              RawMaterialButton(
-                onPressed: ()=>Navigator.pop(context),
-                child: Icon(Icons.close),
-                splashColor: Colors.transparent,
-              )
-            ],
-          ),
+            Row(
+              children: <Widget>[
+                title,
+                Spacer(),
+                RawMaterialButton(
+                  onPressed: ()=>Navigator.pop(context),
+                  child: Icon(Icons.close),
+                  splashColor: Colors.transparent,
+                )
+              ],
+            ),
           child
         ],
       ),
