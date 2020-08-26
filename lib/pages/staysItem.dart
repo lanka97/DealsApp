@@ -153,36 +153,38 @@ class _StaysItemState extends State<StaysItem> {
                         ),
                       ],
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Starting from",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "Starting from",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
 //                          fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          "5500.00",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 4,
-                            fontWeight: FontWeight.bold,
+                          Text(
+                            "5500.00",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 4,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          "per person",
-                          style: TextStyle(
-                            height: 1,
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                          Text(
+                            "per person",
+                            style: TextStyle(
+                              height: 1,
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
 //                          fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
