@@ -46,7 +46,7 @@ class _StaysItemState extends State<StaysItem> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.topLeft,
                     width: double.maxFinite,
                     margin: EdgeInsets.only(
                         top: SizeConfig.screenHeight * 0.0125,
@@ -66,6 +66,30 @@ class _StaysItemState extends State<StaysItem> {
                               size: SizeConfig.screenWidth * 0.04,
                             ),
                           )),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.topRight,
+                    width: double.maxFinite,
+
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.screenHeight * 0.0125,
+                        right: SizeConfig.screenWidth * 0.025),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.red[600],
+                          borderRadius: BorderRadius.circular(4)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(5.0,0,5,0),
+                          child: Text("20%",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+//                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+                            ),
+                          ),
+                        )
                     ),
                   ),
                   Container(
@@ -245,7 +269,7 @@ class _StaysItemState extends State<StaysItem> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("10.30",
+                        Text("21 Jul",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: SizeConfig.blockSizeHorizontal * 4)),

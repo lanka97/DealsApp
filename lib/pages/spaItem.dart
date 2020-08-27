@@ -245,7 +245,7 @@ class _SpaItemState extends State<SpaItem> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("10.30",
+                        Text("21 Jul",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: SizeConfig.blockSizeHorizontal * 4)),
