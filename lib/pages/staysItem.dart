@@ -41,7 +41,7 @@ class _StaysItemState extends State<StaysItem> {
                         'assets/images/img.jpg',
                       ),
                       width: SizeConfig.screenWidth * 0.98,
-                      height: SizeConfig.screenHeight * 0.2,
+                      height: SizeConfig.screenHeight * 0.22,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -77,14 +77,14 @@ class _StaysItemState extends State<StaysItem> {
                         right: SizeConfig.screenWidth * 0.025),
                     child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.red[600],
+                            color: Colors.deepOrange,
                           borderRadius: BorderRadius.circular(4)
                         ),
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(5.0,0,5,0),
                           child: Text("20%",
                             style: TextStyle(
-                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                              fontSize: SizeConfig.blockSizeHorizontal * 4.5,
 //                              fontWeight: FontWeight.bold,
                               color: Colors.white
                             ),
@@ -93,7 +93,7 @@ class _StaysItemState extends State<StaysItem> {
                     ),
                   ),
                   Container(
-                    height: SizeConfig.screenHeight*0.2,
+                    height: SizeConfig.screenHeight*0.22,
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       alignment: Alignment.bottomCenter,
