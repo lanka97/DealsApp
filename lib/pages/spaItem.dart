@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offpeak/pages/salon/view_salon.dart';
 import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 
@@ -23,11 +24,9 @@ class _SpaItemState extends State<SpaItem> {
           shadowColor: Colors.white,
           child: InkWell(
             onTap: () {
-              Navigator.push(
+              Navigator.pushNamed(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => ViewRestaurant(),
-                ),
+               ViewSalon.routeName
               );
             },
             child: Column(

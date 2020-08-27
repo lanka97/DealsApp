@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offpeak/pages/stays/view_stays.dart';
 import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 
@@ -23,12 +24,7 @@ class _StaysItemState extends State<StaysItem> {
           shadowColor: Colors.white,
           child: InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ViewRestaurant(),
-                ),
-              );
+              Navigator.pushNamed(context, ViewStays.routeName);
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

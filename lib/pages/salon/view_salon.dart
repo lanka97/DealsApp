@@ -7,13 +7,13 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
-class ViewHotel extends StatefulWidget {
-  static const routeName = "view_hotel";
+class ViewSalon extends StatefulWidget {
+  static const routeName = "view_salon";
   @override
-  _ViewHotelState createState() => _ViewHotelState();
+  _ViewSalonState createState() => _ViewSalonState();
 }
 
-class _ViewHotelState extends State<ViewHotel> with SingleTickerProviderStateMixin{
+class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMixin{
   HotelDetails _hotel;
   TabController _mainTabController ;
   int _tabIndex;
@@ -677,76 +677,24 @@ class _ViewHotelState extends State<ViewHotel> with SingleTickerProviderStateMix
               ),
             ),
             SizedBox(height: SizeConfig.blockSizeHorizontal * 2,),
-            Text("No. of Rooms",style: titleStyle,),
-            SizedBox(height: SizeConfig.blockSizeHorizontal * 2,),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Spacer(),
-                  RawMaterialButton(
-                    onPressed: () {
-                      if(_selectedRooms != 0){
-                        setStateBottom(() {
-                          --_selectedRooms;
-                        });
-                      }
-                    },
-                    splashColor: Colors.transparent,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          top: border,
-                          bottom: border,
-                          left: border,
-                          right: border,
-                        )
-                      ),
-                        child: Icon(Icons.remove,size: iconSize,)),
-                  ),
-                  Text(_selectedRooms.toString()),
-                  RawMaterialButton(
-                    onPressed: () {
-                        setStateBottom(() {
-                          ++_selectedRooms;
-                        });
-
-                    },
-                    splashColor: Colors.transparent,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          top: border,
-                          bottom: border,
-                          left: border,
-                          right: border,
-                        )
-                      ),
-                        child: Icon(Icons.add,size: iconSize,)),
-                  ),
-                  Spacer(),
-                ],
-              ),
-            ),
-            SizedBox(height: SizeConfig.blockSizeHorizontal * 2,),
-            Text("Accommodation Type",style: titleStyle,),
-            SizedBox(height: SizeConfig.blockSizeHorizontal * 2,),
+            Text("Choose the Time",style: titleStyle,),
             Container(
               height: SizeConfig.blockSizeHorizontal * 14,
               alignment: Alignment.center,
               child: ListView.builder(
-                itemCount: hotelRoom.roomPromotion.length,
+                itemCount: hotelRoom.availableDates.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
-                  final package = hotelRoom.roomPromotion[index];
-                  final text = package.name;
-                  final selected = _selectedAccommodationType == package;
+                  final text = hotelRoom.availableDates[index].replaceAll("Aug ", ":10");
+                  final selected = _selectedDates.contains(text);
                   return InkWell(
                     onTap: (){
                       setStateBottom(() {
-                        _selectedAccommodationType = package;
-                      });
+                        if(selected){
+                          _selectedDates.remove(text);
+                        }else{
+                          _selectedDates.add(text);
+                        }                      });
                     },
                     child: Card(
                       color: selected?selectedColor:unselectedColor,
@@ -775,7 +723,7 @@ class _ViewHotelState extends State<ViewHotel> with SingleTickerProviderStateMix
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: RaisedButton(
-                onPressed: _selectedAccommodationType == null || _selectedDates.length == 0?null:(){
+                onPressed:_selectedDates.length == 0?null:(){
                   setState(() {
                     _selectedRoomType = hotelRoom;
                   });
