@@ -7,7 +7,7 @@ import 'package:offpeak/utils/size_config.dart';
 import '../utils/size_config.dart';
 
 class Stays extends StatefulWidget {
-  static const routeName = "restaurants";
+  static const routeName = "stays";
   @override
   _StaysState createState() => _StaysState();
 }

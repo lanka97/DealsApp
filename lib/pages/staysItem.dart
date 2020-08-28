@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offpeak/pages/stays/view_stays.dart';
 import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 
@@ -23,12 +24,7 @@ class _StaysItemState extends State<StaysItem> {
           shadowColor: Colors.white,
           child: InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ViewRestaurant(),
-                ),
-              );
+              Navigator.pushNamed(context, ViewStays.routeName);
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,36 +173,38 @@ class _StaysItemState extends State<StaysItem> {
                         ),
                       ],
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Starting from",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "Starting from",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
 //                          fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          "5500.00",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal * 4,
-                            fontWeight: FontWeight.bold,
+                          Text(
+                            "5500.00",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 4,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          "per person",
-                          style: TextStyle(
-                            height: 1,
-                            fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                          Text(
+                            "per person",
+                            style: TextStyle(
+                              height: 1,
+                              fontSize: SizeConfig.blockSizeHorizontal * 3.5,
 //                          fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
