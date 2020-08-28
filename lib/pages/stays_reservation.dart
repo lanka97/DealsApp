@@ -68,113 +68,13 @@ class _HotelReservation extends State<HotelReservation> {
                   ),
                 ),
                 Card(
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              width: SizeConfig.screenWidth * 0.4,
-                              child: Text(
-                                "Deluxe Double Room",
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 3.75,
-                                  fontWeight: FontWeight.w500
-                                ),
-                              ),
-                            ),
-                            Container(
-//                          alignment: Alignment.centerRight,
-                              width: SizeConfig.screenWidth * 0.1,
-                              child: Text(
-                                "x10",
-                                style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.centerRight,
-                              width: SizeConfig.screenWidth * 0.2,
-                              child: Text(
-                                "Rs. 800.00",
-                                style: TextStyle(
-                                  color: Colors.orange,
-                                  fontSize: SizeConfig.blockSizeHorizontal * 4.0,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.topRight,
-                              width: SizeConfig.screenWidth * 0.15,
-                              child: Icon(Icons.close, color: Colors.red),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              width: SizeConfig.screenWidth * 0.5,
-                              child: Text(
-                                "Bed & Breakfast",
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                                  fontWeight: FontWeight.w500
-                                ),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.centerRight,
-                              width: SizeConfig.screenWidth * 0.2,
-                              child: Text(
-                                "Rs. 1000.00",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                                  decoration: TextDecoration.lineThrough,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                width: SizeConfig.screenWidth * 0.8,
-                                alignment: Alignment.centerLeft,
-                                child: FlatButton(
-//                                  padding: const EdgeInsets.all(5),
-                                  child: Text(
-                                    'Edit',
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                                      fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                  },
-                                ),
-                              ),
-                            ]
-                        ),
-                      ],
-                    ),
-                ),
-                Card(
                   child: Column(
                     children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            width: SizeConfig.screenWidth * 0.4,
+                            width: SizeConfig.screenWidth * 0.45,
                             child: Text(
                               "Deluxe Double Room",
                               overflow: TextOverflow.ellipsis,
@@ -208,7 +108,7 @@ class _HotelReservation extends State<HotelReservation> {
                           ),
                           Container(
                             alignment: Alignment.topRight,
-                            width: SizeConfig.screenWidth * 0.15,
+                            width: SizeConfig.screenWidth * 0.1,
                             child: Icon(Icons.close, color: Colors.red),
                           ),
                         ],
@@ -217,7 +117,7 @@ class _HotelReservation extends State<HotelReservation> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            width: SizeConfig.screenWidth * 0.5,
+                            width: SizeConfig.screenWidth * 0.55,
                             child: Text(
                               "Bed & Breakfast",
                               overflow: TextOverflow.ellipsis,
@@ -245,9 +145,9 @@ class _HotelReservation extends State<HotelReservation> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Container(
-                              width: SizeConfig.screenWidth * 0.8,
-                              alignment: Alignment.centerLeft,
-                              child: FlatButton(
+//                              width: SizeConfig.screenWidth * 0.8,
+//                              alignment: Alignment.centerLeft,
+                              child: InkWell(
 //                                  padding: const EdgeInsets.all(5),
                                 child: Text(
                                   'Edit',
@@ -258,8 +158,7 @@ class _HotelReservation extends State<HotelReservation> {
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),
-                                onPressed: () {
-                                },
+                                onTap: ()=>{},
                               ),
                             ),
                           ]
@@ -267,7 +166,105 @@ class _HotelReservation extends State<HotelReservation> {
                     ],
                   ),
                 ),
-                SizedBox(),
+                Card(
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: SizeConfig.screenWidth * 0.45,
+                            child: Text(
+                              "Deluxe Double Room",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: SizeConfig.blockSizeHorizontal * 3.75,
+                                  fontWeight: FontWeight.w500
+                              ),
+                            ),
+                          ),
+                          Container(
+//                          alignment: Alignment.centerRight,
+                            width: SizeConfig.screenWidth * 0.1,
+                            child: Text(
+                              "x10",
+                              style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.centerRight,
+                            width: SizeConfig.screenWidth * 0.2,
+                            child: Text(
+                              "Rs. 800.00",
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontSize: SizeConfig.blockSizeHorizontal * 4.0,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.topRight,
+                            width: SizeConfig.screenWidth * 0.1,
+                            child: Icon(Icons.close, color: Colors.red),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: SizeConfig.screenWidth * 0.55,
+                            child: Text(
+                              "Bed & Breakfast",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                                  fontWeight: FontWeight.w500
+                              ),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.centerRight,
+                            width: SizeConfig.screenWidth * 0.2,
+                            child: Text(
+                              "Rs. 1000.00",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+//                              width: SizeConfig.screenWidth * 0.8,
+//                              alignment: Alignment.centerLeft,
+                              child: InkWell(
+//                                  padding: const EdgeInsets.all(5),
+                                child: Text(
+                                  'Edit',
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: SizeConfig.blockSizeHorizontal * 3.5,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                                onTap: ()=>{},
+                              ),
+                            ),
+                          ]
+                      ),
+                    ],
+                  ),
+                ),
                 Text(
                   "Payment Details",
                   style: TextStyle(
@@ -283,7 +280,7 @@ class _HotelReservation extends State<HotelReservation> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            width: SizeConfig.screenWidth * 0.6,
+                            width: SizeConfig.screenWidth * 0.55,
                             child: Text(
                               "Total Amount to be Paid",
                               overflow: TextOverflow.ellipsis,
@@ -295,9 +292,9 @@ class _HotelReservation extends State<HotelReservation> {
                           ),
                           Container(
                             alignment: Alignment.centerRight,
-                            width: SizeConfig.screenWidth * 0.2,
+                            width: SizeConfig.screenWidth * 0.25,
                             child: Text(
-                              "Rs. 8000.00",
+                              "Rs. 8,000.00",
                               style: TextStyle(
                                 color: Colors.orange,
                                 fontSize: SizeConfig.blockSizeHorizontal * 4.0,
@@ -333,7 +330,7 @@ class _HotelReservation extends State<HotelReservation> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            width: SizeConfig.screenWidth * 0.6,
+                            width: SizeConfig.screenWidth * 0.55,
                             child: Text(
                               "Pay at Property",
                               overflow: TextOverflow.ellipsis,
@@ -345,9 +342,9 @@ class _HotelReservation extends State<HotelReservation> {
                           ),
                           Container(
                             alignment: Alignment.centerRight,
-                            width: SizeConfig.screenWidth * 0.2,
+                            width: SizeConfig.screenWidth * 0.25,
                             child: Text(
-                              "Rs. 6400.00",
+                              "Rs. 6,400.00",
                               style: TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal * 4.0,
                               ),
@@ -365,7 +362,7 @@ class _HotelReservation extends State<HotelReservation> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            width: SizeConfig.screenWidth * 0.6,
+                            width: SizeConfig.screenWidth * 0.55,
                             child: Text(
                               "Book the Property (20%)",
                               overflow: TextOverflow.ellipsis,
@@ -377,9 +374,9 @@ class _HotelReservation extends State<HotelReservation> {
                           ),
                           Container(
                             alignment: Alignment.centerRight,
-                            width: SizeConfig.screenWidth * 0.2,
+                            width: SizeConfig.screenWidth * 0.25,
                             child: Text(
-                              "Rs. 1600.00",
+                              "Rs. 1,600.00",
                               style: TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal * 4.0,
                                   fontWeight: FontWeight.bold
@@ -398,7 +395,7 @@ class _HotelReservation extends State<HotelReservation> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            width: SizeConfig.screenWidth * 0.6,
+                            width: SizeConfig.screenWidth * 0.575,
                             child: Text(
                               "Use Promo Code",
                               overflow: TextOverflow.ellipsis,
@@ -410,7 +407,7 @@ class _HotelReservation extends State<HotelReservation> {
                           ),
                           Container(
                             alignment: Alignment.centerRight,
-                            width: SizeConfig.screenWidth * 0.2,
+                            width: SizeConfig.screenWidth * 0.25,
                             child: TextField(
                               style: TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal * 4.0,
@@ -637,70 +634,45 @@ class _HotelReservation extends State<HotelReservation> {
                 Column(
                   children: <Widget>[
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Container(
-                          width: SizeConfig.screenWidth * 0.4,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                "Rs. 1600.00",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
+                        Expanded(child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "Rs. 1,600.00",
+                              style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                              )
+                            ),
+                            Text(
+                              "Total Discount Rs. 2,500.00",
                                 style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 5.0,
-                                    fontWeight: FontWeight.w500
-                                ),
-                              ),
-                              Text(
-                                "Total Discount Rs. 2500.00",
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: SizeConfig.blockSizeHorizontal * 3.5,
-                                    fontWeight: FontWeight.w500,
                                   color: Colors.orange,
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
+                                )
+                            ),
+                          ],
+                        )),
                         Container(
-                          height: SizeConfig.screenHeight * 0.075,
-                          width: SizeConfig.screenWidth * 0.45,
-                          child: FlatButton(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.blockSizeHorizontal * 10.0),
-                            onPressed: () {
-                            },
+                          height: SizeConfig.screenHeight * 0.06,
+                          child: RaisedButton(
+
+                            onPressed: () {  },
+                            color: Colors.red,
+                            textColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(10.0),
                             ),
-                            child: Ink(
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10.0),
-                                ),
-                              ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    Text(
-                                      "Pay Now",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: SizeConfig.blockSizeHorizontal * 5.5),
-                                    )
-                                  ],
-                                ),
+                            child: Text(
+                              "Pay Now",
+                              style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 5.0,
                               ),
                             ),
-                          ),
+                          )
                         ),
                       ],
-                    ),
+                    )
                   ],
                 ),
 

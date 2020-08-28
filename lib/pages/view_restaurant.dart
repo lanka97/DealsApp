@@ -6,7 +6,6 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
-import 'hotel_reservation.dart';
 
 class ViewRestaurant extends StatefulWidget {
   static const routeName = "view_restaurant";
@@ -243,7 +242,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HotelReservation(),
+              builder: (context) => Reservation(),
             ),
           );
         },
