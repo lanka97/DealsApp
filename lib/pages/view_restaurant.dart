@@ -6,6 +6,7 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
+
 class ViewRestaurant extends StatefulWidget {
   static const routeName = "view_restaurant";
   @override

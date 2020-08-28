@@ -15,26 +15,26 @@ import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/pages/restaurants.dart';
 
 /// Only for [NormalPreview]
-//void main() {
-//  runApp(MyApp());
-//}
+void main() {
+  runApp(MyApp());
+}
 
 
 /// Only for [DevicePreview]
-void main() => runApp(
-  DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => MyApp(),
-  ),
-);
+//void main() => runApp(
+//  DevicePreview(
+//    enabled: !kReleaseMode,
+//    builder: (context) => MyApp(),
+//  ),
+//);
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: DevicePreview.of(context).locale, /// Only for [DevicePreview] - comment this for [Normal Preview]
-      builder: DevicePreview.appBuilder, /// Only for [DevicePreview] - comment this for [Normal Preview]
+//      locale: DevicePreview.of(context).locale, /// Only for [DevicePreview] - comment this for [Normal Preview]
+//      builder: DevicePreview.appBuilder, /// Only for [DevicePreview] - comment this for [Normal Preview]
       title: 'Happy Hour',
       theme: ThemeData(
         fontFamily: 'Poppins',
