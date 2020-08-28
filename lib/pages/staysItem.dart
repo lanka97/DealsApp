@@ -37,12 +37,12 @@ class _StaysItemState extends State<StaysItem> {
                         'assets/images/img.jpg',
                       ),
                       width: SizeConfig.screenWidth * 0.98,
-                      height: SizeConfig.screenHeight * 0.2,
+                      height: SizeConfig.screenHeight * 0.22,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Container(
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.topLeft,
                     width: double.maxFinite,
                     margin: EdgeInsets.only(
                         top: SizeConfig.screenHeight * 0.0125,
@@ -65,7 +65,31 @@ class _StaysItemState extends State<StaysItem> {
                     ),
                   ),
                   Container(
-                    height: SizeConfig.screenHeight*0.2,
+                    alignment: Alignment.topRight,
+                    width: double.maxFinite,
+
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.screenHeight * 0.0125,
+                        right: SizeConfig.screenWidth * 0.025),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.deepOrange,
+                          borderRadius: BorderRadius.circular(4)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(5.0,0,5,0),
+                          child: Text("20%",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+//                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+                            ),
+                          ),
+                        )
+                    ),
+                  ),
+                  Container(
+                    height: SizeConfig.screenHeight*0.22,
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       alignment: Alignment.bottomCenter,
@@ -243,7 +267,7 @@ class _StaysItemState extends State<StaysItem> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("10.30",
+                        Text("21 Jul",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: SizeConfig.blockSizeHorizontal * 4)),
