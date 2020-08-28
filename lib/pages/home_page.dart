@@ -1,3 +1,4 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:offpeak/pages/ActivityItem.dart';
@@ -7,6 +8,7 @@ import 'package:offpeak/pages/spaItem.dart';
 import 'package:offpeak/pages/spas.dart';
 import 'package:offpeak/pages/stays.dart';
 import 'package:offpeak/pages/staysItem.dart';
+import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/widgets/restaurantItem.dart';
 
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           _buildTop(),
           Container(
             height: SizeConfig.blockSizeHorizontal * 50,
-            color: Colors.grey,
+            child: _buildSlideShow(),
           ),
           _titleWidget(title: "Top Eats",route: Restaurants.routeName),
           _topEats(),
@@ -148,26 +150,53 @@ class _HomePageState extends State<HomePage> {
   Widget _buildTop() {
     return Container(
       height: SizeConfig.screenWidth * 0.3,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 3),
-              child: Column(
-                children: <Widget>[
-                  Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(150)),
-                    child: Container(
-                      width: SizeConfig.blockSizeHorizontal *15,
-                      height: SizeConfig.blockSizeHorizontal *15,
-                    ),
-                  ),
-                  Text("sample $index")
-                ],
+      child: Row(
+        children: <Widget>[
+          Expanded(child: _topItem(title: "Eats",iconData: Icons.restaurant,onTap: (){
+            Navigator.pushNamed(context, Restaurants.routeName);
+          }),),
+          Expanded(child: _topItem(title: "Stays",iconData: Icons.hotel,onTap: (){
+            Navigator.pushNamed(context, Stays.routeName);
+          })),
+          Expanded(child: _topItem(title: "Activities",iconData: Icons.golf_course,onTap: (){
+            Navigator.pushNamed(context, Activities.routeName);
+          })),
+          Expanded(child: _topItem(title: "Salon",iconData: Icons.spa,onTap: (){
+            Navigator.pushNamed(context, Spas.routeName);
+          })),
+        ],
+      ),
+    );
+  }
+  Widget  _topItem({String title,VoidCallback onTap,IconData iconData}){
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 3),
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          children: <Widget>[
+            Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(150)),
+              child: Container(
+                padding: const EdgeInsets.all(14),
+                child: Icon(iconData),
               ),
-            );
-          }),
+            ),
+            Text(title,style: Theme.of(context).textTheme.headline6.copyWith(),)
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSlideShow() {
+    return Container(
+      child: Carousel(
+        images: [
+          NetworkImage('https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg'),
+          NetworkImage('https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg'),
+        ],
+      ),
     );
   }
 }
