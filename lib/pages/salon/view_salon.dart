@@ -7,6 +7,8 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
+import '../salons_reservation.dart';
+
 class ViewSalon extends StatefulWidget {
   static const routeName = "view_salon";
   @override
@@ -817,7 +819,14 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
                         ],
                       )),
                       RaisedButton(
-                        onPressed: () {  },
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HotelReservation(),
+                            ),
+                          );
+                        },
                         color: unselectedColor,
                         textColor: Colors.white,
                         child: Text("Reserve"),

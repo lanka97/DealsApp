@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:offpeak/models/hotel_details.dart';
 import 'package:offpeak/models/restaurant.dart';
-import 'package:offpeak/pages/reservation.dart';
+import 'package:offpeak/pages/stays_reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
 class ViewStays extends StatefulWidget {
@@ -190,7 +190,7 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Reservation(),
+              builder: (context) => HotelReservation(),
             ),
           );
         },
@@ -869,7 +869,14 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
                         ],
                       )),
                       RaisedButton(
-                        onPressed: () {  },
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HotelReservation(),
+                            ),
+                          );
+                        },
                         color: unselectedColor,
                         textColor: Colors.white,
                         child: Text("Reserve"),

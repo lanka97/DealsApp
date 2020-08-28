@@ -7,6 +7,8 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
+import '../activities_reservation.dart';
+
 class ViewActivities extends StatefulWidget {
   static const routeName = "view_activities";
   @override
@@ -839,7 +841,14 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
                         ],
                       )),
                       RaisedButton(
-                        onPressed: () {  },
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HotelReservation(),
+                            ),
+                          );
+                        },
                         color: unselectedColor,
                         textColor: Colors.white,
                         child: Text("Reserve"),

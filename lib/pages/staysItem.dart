@@ -31,7 +31,7 @@ class _StaysItemState extends State<StaysItem> {
               children: [
                 Stack(children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(8),
                     child: Image(
                       image: AssetImage(
                         'assets/images/img.jpg',
@@ -127,7 +127,7 @@ class _StaysItemState extends State<StaysItem> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
                           child: Text(
-                            "Colombo 01 | Spend the Day",
+                            "Colombo 01",
                             style: TextStyle(
                               fontSize: SizeConfig.blockSizeHorizontal * 4.1,
                               color: Colors.black45,

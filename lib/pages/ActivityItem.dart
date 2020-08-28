@@ -34,7 +34,7 @@ class _ActivityItemState extends State<ActivityItem> {
               children: [
                 Stack(children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(8),
                     child: Image(
                       image: AssetImage(
                         'assets/images/img.jpg',
