@@ -13,7 +13,7 @@ class HotelReservation extends StatefulWidget {
 }
 
 class _HotelReservation extends State<HotelReservation> {
-  Reserve reserve = new Reserve("Test Resturant @ Colombo", "Tommorow",
+  Reserve reserve = new Reserve("Test Salon @ Colombo", "Tommorow",
       "10.30 a.m.", "10%", "2", "Colombo-01");
   ReserveHotel reserveHotel = new ReserveHotel(
       "Test Hotel - Colombo",
