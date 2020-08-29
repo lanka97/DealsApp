@@ -277,7 +277,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockHorizontal * 3.5;
+    final topPosition = SizeConfig.safeBlockVertical * 3;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,

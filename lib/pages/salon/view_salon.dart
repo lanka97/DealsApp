@@ -67,11 +67,11 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("$_selectedRooms Activities| ${_selectedDates.length} Guests",style: titleStyle,),
+                          Text("$_selectedRooms Package| ${_selectedDates.length} Nail Polishing",style: titleStyle,),
                           Row(
                             children: <Widget>[
-                              Text("Rs. $totalPrice",style: totalStyle,),
-                              Text("Rs. $price",style: priceStyle,),
+                              Text("Rs. 800",style: totalStyle,),
+                              Text("Rs. 1000",style: priceStyle,),
                             ],
                           ),
                           Text("Edit",style: priceStyle.copyWith(decoration: TextDecoration.underline,color: Color(0xFF014895)),),
@@ -120,22 +120,37 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
         children: <Widget>[
           Row(
             children: <Widget>[
-              Expanded(child: Text(_hotel.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 5.5, fontFamily: _fontName),)),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Test Salon',style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 5.5, fontFamily: _fontName),),
+                    Text(
+                      'Colombo 1| Nail Polish',
+                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                    ),
+                    //Expanded(child: Text(_restaurant.promotion,style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color:blueGrey),)),
+                    Icon(Icons.star,color: Color(0xFFCC070B),),
+                    Row(
+                      children: <Widget>[
+                        Text("${_hotel.ratings}",style: TextStyle(color: darkBlue,fontFamily: _fontName)),
+                        Text("(${_hotel.voteCount})",style: TextStyle(color: blueGrey,fontFamily: _fontName),),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                children: <Widget>[
+                  Container(child: Text('Starting from ',style: textTheme.headline6.copyWith(fontWeight: FontWeight.normal, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 3.5, fontFamily: _fontName),)),
+                  Container(child: Text('Rs. 5000 ',style: textTheme.headline6.copyWith(fontWeight: FontWeight.w800, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 5, fontFamily: _fontName),)),
+                  Container(child: Text('per person',style: textTheme.headline6.copyWith(fontWeight: FontWeight.normal, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 3.5, fontFamily: _fontName),)),
+                ],
+              ),
             ],
           ),
-          SizedBox(height: SizeConfig.blockSizeVertical,),
-          Row(
-            children: <Widget>[
-              Expanded(child: Text(
-                'Colombo 1',
-                style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
-              ),),
-              //Expanded(child: Text(_restaurant.promotion,style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color:blueGrey),)),
-              Icon(Icons.star,color: Color(0xFFCC070B),),
-              Text("${_hotel.ratings}",style: TextStyle(color: darkBlue,fontFamily: _fontName)),
-              Text("(${_hotel.voteCount})",style: TextStyle(color: blueGrey,fontFamily: _fontName),),
-            ],
-          ),
+          
           SizedBox(height: SizeConfig.blockSizeVertical * 0.5,),
           Container(
             height: SizeConfig.blockSizeHorizontal * 13,
@@ -227,7 +242,7 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockHorizontal * 3.5;
+    final topPosition = SizeConfig.safeBlockVertical * 3;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,
@@ -238,7 +253,7 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
             width: double.infinity,
             child: CachedNetworkImage(
               fit: BoxFit.cover,
-              imageUrl: _hotel.image,
+              imageUrl: "https://i.pinimg.com/originals/44/72/86/44728633ce2839b20e1d3159d6ca401c.jpg",
             ),
           ),
           Positioned(
@@ -511,31 +526,52 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text("Spend the Day Package",style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),),
-          SizedBox(height: SizeConfig.blockSizeHorizontal,),
-          Text("Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites",style: secondaryStyle,),
-          SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0)
+              Container(
+                width: SizeConfig.blockSizeHorizontal * 15,
+                height: SizeConfig.blockSizeHorizontal * 15,
+                child: CachedNetworkImage(
+                  imageUrl: "https://i.pinimg.com/originals/44/72/86/44728633ce2839b20e1d3159d6ca401c.jpg",
+                  imageBuilder: (context,image)=>Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)
+                    ),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image(image: image,fit: BoxFit.cover,)),
+                  ),
                 ),
-                color: orangeColor,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
-                  child: Text("20%",style: secondaryStyle.copyWith(color: Colors.white),),
-                ),),
+              ),
               SizedBox(width: SizeConfig.blockSizeHorizontal,),
-              Column(
+              Expanded(child: Text("Ladies Nail Polishing",style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),)),
+              SizedBox(width: SizeConfig.blockSizeHorizontal,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Text("Rs. 800",style: newPriceStyle,),
-                  Text("Rs. 1000",style: oldPriceStyle),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)
+                    ),
+                    color: orangeColor,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
+                      child: Text("20%",style: secondaryStyle.copyWith(color: Colors.white),),
+                    ),),
+                  SizedBox(width: SizeConfig.blockSizeHorizontal,),
+                  Column(
+                    children: <Widget>[
+                      Text("Rs. 800",style: newPriceStyle,),
+                      Text("Rs. 1000",style: oldPriceStyle),
+                    ],
+                  )
                 ],
               )
             ],
           ),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
+          Text("Nail Polishing with something. There can be more text here. Nail Polishing with something. There can be more text here.Nail Polishing with something. There can be more text here. Nail Polishing with something. There can be more text here. Nail Polishing with something. There can be more text here. Nail",style: secondaryStyle,),
           SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Container(
             width: double.infinity,
@@ -781,9 +817,8 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(_selectedRoomType.title,style: secondaryStyle,),
+                            Text("Nail Polishing",style: secondaryStyle,),
                             Text("Edit",style: priceStyle.copyWith(decoration: TextDecoration.underline,color: Color(0xFF014895)),),
-
                           ],
                         ),
                         Spacer(),
@@ -793,8 +828,8 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Text("Rs. $totalPrice",style: totalStyle,),
-                              Text("Rs. $price",style: priceStyle,)
+                              Text("Rs. 900",style: totalStyle,),
+                              Text("Rs. 1000",style: priceStyle,)
                             ],
                           ),
                         )
@@ -815,7 +850,7 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("2 Rooms| 5 Guests| 1 Night",style: titleStyle.copyWith(color: Color(0xFF646464)),),
+                            Text("1 Saloon| 1 Package",style: titleStyle.copyWith(color: Color(0xFF646464)),),
                             Text("View Reservation",style: secondaryStyle.copyWith(color: Color(0xFF014895,),decoration: TextDecoration.underline),),
                           ],
                         )),

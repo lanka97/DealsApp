@@ -227,7 +227,7 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockHorizontal * 3.5;
+    final topPosition = SizeConfig.safeBlockVertical * 3;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,
@@ -238,7 +238,7 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
             width: double.infinity,
             child: CachedNetworkImage(
               fit: BoxFit.cover,
-              imageUrl: _hotel.image,
+              imageUrl: "https://wallpaperaccess.com/full/1619228.jpg",
             ),
           ),
           Positioned(
@@ -511,31 +511,35 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text("Spend the Day Package",style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),),
-          SizedBox(height: SizeConfig.blockSizeHorizontal,),
-          Text("Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites",style: secondaryStyle,),
-          SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0)
-                ),
-                color: orangeColor,
-                child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
-                child: Text("20%",style: secondaryStyle.copyWith(color: Colors.white),),
-              ),),
+              Expanded(child: Text("Spend the Day Package",style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),)),
               SizedBox(width: SizeConfig.blockSizeHorizontal,),
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Text("Rs. 800",style: newPriceStyle,),
-                  Text("Rs. 1000",style: oldPriceStyle),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)
+                    ),
+                    color: orangeColor,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
+                      child: Text("20%",style: secondaryStyle.copyWith(color: Colors.white),),
+                    ),),
+                  SizedBox(width: SizeConfig.blockSizeHorizontal,),
+                  Column(
+                    children: <Widget>[
+                      Text("Rs. 800",style: newPriceStyle,),
+                      Text("Rs. 1000",style: oldPriceStyle),
+                    ],
+                  )
                 ],
-              )
+              ),
             ],
           ),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
+          Text("Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites",style: secondaryStyle,),
           SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Container(
             width: double.infinity,
