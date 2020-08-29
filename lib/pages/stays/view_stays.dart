@@ -225,7 +225,7 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockHorizontal * 3.5;
+    final topPosition = SizeConfig.safeBlockVertical * 3;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,
@@ -236,7 +236,7 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
             width: double.infinity,
             child: CachedNetworkImage(
               fit: BoxFit.cover,
-              imageUrl: _hotel.image,
+              imageUrl: "https://www.wallpapers4u.org/wp-content/uploads/hotel_room_bed_stylish_modern_39745_1920x1080.jpg",
             ),
           ),
           Positioned(
@@ -512,8 +512,15 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
                 width: SizeConfig.blockSizeHorizontal * 20,
                 child: CachedNetworkImage(
                   imageUrl: hotelRoom.image,
-                  fit: BoxFit.cover,
-                ),
+                    imageBuilder: (context,image)=>Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)
+                      ),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image(image: image,fit: BoxFit.cover,)),
+                    )                ),
               ),
               SizedBox(width: SizeConfig.blockSizeHorizontal * 2,),
               Expanded(
