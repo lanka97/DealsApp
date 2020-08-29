@@ -7,7 +7,7 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
-import '../activities_reservation.dart';
+import '../salons_reservation.dart';
 
 class ViewSalon extends StatefulWidget {
   static const routeName = "view_salon";
