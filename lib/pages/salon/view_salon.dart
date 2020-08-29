@@ -7,7 +7,7 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
-import '../salons_reservation.dart';
+import '../activities_reservation.dart';
 
 class ViewSalon extends StatefulWidget {
   static const routeName = "view_salon";
@@ -67,7 +67,7 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("$_selectedRooms Rooms| ${_selectedDates.length} Nights",style: titleStyle,),
+                          Text("$_selectedRooms Activities| ${_selectedDates.length} Guests",style: titleStyle,),
                           Row(
                             children: <Widget>[
                               Text("Rs. $totalPrice",style: totalStyle,),
@@ -127,8 +127,8 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
           Row(
             children: <Widget>[
               Expanded(child: Text(
-    'Colombo 1',
-    style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                'Colombo 1',
+                style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
               ),),
               //Expanded(child: Text(_restaurant.promotion,style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,fontWeight: FontWeight.bold,color:blueGrey),)),
               Icon(Icons.star,color: Color(0xFFCC070B),),
@@ -167,7 +167,7 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
     return Padding(
       padding: const EdgeInsets.only(right: 2),
       child: Container(
-        width: SizeConfig.blockSizeHorizontal * 24,
+        width: SizeConfig.blockSizeHorizontal * 20,
         child: Card(
           color: color,
           child: Column(
@@ -227,11 +227,11 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockVertical * 3.5;
+    final topPosition = SizeConfig.safeBlockHorizontal * 3.5;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,
-      height: SizeConfig.blockSizeVertical * 32,
+      height: SizeConfig.blockSizeHorizontal * 45,
       child: Stack(
         children: <Widget>[
           Container(
@@ -499,44 +499,44 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
     final textTheme = Theme.of(context).textTheme;
     final redColor = Color(0xFFCC070B);
     final orangeColor = Color(0xFFF57C3F);
+    final greyColor = Color(0xFF8A98BA);
     final buttonTextStyle = textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 3.9);
     final selected = hotelRoom.title == _selectedRoomType?.title;
-
+    final secondaryStyle = textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8);
+    final newPriceStyle = textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.3,color: orangeColor);
+    final oldPriceStyle = textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.2,decoration: TextDecoration.lineThrough,color: greyColor);
     return Container(
       padding: const EdgeInsets.only(top: 10,bottom: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Text("Spend the Day Package",style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
+          Text("Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites",style: secondaryStyle,),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Container(
-                width: SizeConfig.blockSizeHorizontal * 20,
-                child: CachedNetworkImage(
-                  imageUrl: hotelRoom.image,
-                  fit: BoxFit.cover,
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
-              ),
-              SizedBox(width: SizeConfig.blockSizeHorizontal * 2,),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(hotelRoom.title,style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),),
-                    Text(hotelRoom.details,style: textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8),),
-                  ],
-                ),
+                color: orangeColor,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
+                  child: Text("20%",style: secondaryStyle.copyWith(color: Colors.white),),
+                ),),
+              SizedBox(width: SizeConfig.blockSizeHorizontal,),
+              Column(
+                children: <Widget>[
+                  Text("Rs. 800",style: newPriceStyle,),
+                  Text("Rs. 1000",style: oldPriceStyle),
+                ],
               )
             ],
           ),
-          ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-    padding: EdgeInsets.zero,
-    shrinkWrap: true,
-            itemCount: hotelRoom.roomPromotion.length,
-             itemBuilder: (BuildContext context, int index) => _roomPromotion(hotelRoom.roomPromotion[index]),
-          ),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Container(
             width: double.infinity,
             child: RaisedButton(
@@ -571,8 +571,8 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
     final cardTextStyle = nameStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.6,color: Colors.white);
 
     final originalPriceTextStyle = canShowPromotion?
-      nameStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.0,color: Color(0xFF8A98BA),decoration: TextDecoration.lineThrough):
-      nameStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8,color: Colors.black);
+    nameStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.0,color: Color(0xFF8A98BA),decoration: TextDecoration.lineThrough):
+    nameStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8,color: Colors.black);
 
     final finalPriceTextStyle = nameStyle.copyWith(color: orangeColor,fontSize: SizeConfig.blockSizeHorizontal * 3.8);
     return Container(
@@ -580,11 +580,11 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
         children: <Widget>[
           Expanded(flex:2,child: Text(promotion.name,style: nameStyle,)),
           canShowPromotion?Card(
-            color: orangeColor,
+              color: orangeColor,
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 2),
-            child: Text("${promotion.percentage}%",style: cardTextStyle,),
-          )):Expanded(child: Container()),
+                padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 2),
+                child: Text("${promotion.percentage}%",style: cardTextStyle,),
+              )):Expanded(child: Container()),
           Expanded(flex: 1,child: Container(
               alignment: Alignment.centerRight,
 
@@ -612,17 +612,17 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-            Row(
-              children: <Widget>[
-                title,
-                Spacer(),
-                RawMaterialButton(
-                  onPressed: ()=>Navigator.pop(context),
-                  child: Icon(Icons.close),
-                  splashColor: Colors.transparent,
-                )
-              ],
-            ),
+          Row(
+            children: <Widget>[
+              title,
+              Spacer(),
+              RawMaterialButton(
+                onPressed: ()=>Navigator.pop(context),
+                child: Icon(Icons.close),
+                splashColor: Colors.transparent,
+              )
+            ],
+          ),
           child
         ],
       ),
@@ -631,7 +631,7 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
   _onSelectRoom(HotelRoom hotelRoom) {
     final iconSize = SizeConfig.blockSizeHorizontal * 4.5;
     final titleStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: iconSize);
-    final secondaryStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.5,color: Colors.white);
+    final secondaryStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Colors.white);
     final selectedColor = Color(0xFFF57C3F);
     final unselectedColor = Color(0xFFCC070B);
     final border = BorderSide(color: Colors.black);
@@ -650,7 +650,7 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: SizeConfig.blockSizeHorizontal * 14,
+              height: SizeConfig.blockSizeHorizontal * 12,
               alignment: Alignment.center,
               child: ListView.builder(
                 itemCount: hotelRoom.availableDates.length,
@@ -681,13 +681,13 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
             SizedBox(height: SizeConfig.blockSizeHorizontal * 2,),
             Text("Choose the Time",style: titleStyle,),
             Container(
-              height: SizeConfig.blockSizeHorizontal * 14,
+              height: SizeConfig.blockSizeHorizontal * 10,
               alignment: Alignment.center,
               child: ListView.builder(
                 itemCount: hotelRoom.availableDates.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
-                  final text = hotelRoom.availableDates[index].replaceAll("Aug ", ":10");
+                  final text = hotelRoom.availableDates[index].replaceAll(" Aug", ":10");
                   final selected = _selectedDates.contains(text);
                   return InkWell(
                     onTap: (){
@@ -710,13 +710,13 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
               ),
             ),
             Container(
-              child: price <= 0?Container():Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                   Text("Rs. $totalPrice",style: totalStyle,),
+                  Text("Rs. 800",style: totalStyle,),
                   SizedBox(width: SizeConfig.blockSizeHorizontal,),
-                  price == totalPrice ? Container():Text("Rs. $price",style: priceStyle,),
+                  Text("Rs. 1000",style: priceStyle,),
                 ],
               ),
             ),
@@ -733,8 +733,10 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
                 },
                 color: unselectedColor,
                 disabledColor: unselectedColor.withOpacity(0.6),
-                child: Text("Add",style: secondaryStyle,),
-              ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Add",style: secondaryStyle,),
+                ),              ),
             ),
             SizedBox(height: SizeConfig.blockSizeHorizontal,),
           ],
@@ -760,85 +762,84 @@ class _ViewSalonState extends State<ViewSalon> with SingleTickerProviderStateMix
     final priceStyle = titleStyle.copyWith(color: Color(0xFF8A98BA),fontSize: SizeConfig.blockSizeHorizontal * 3.0,decoration: TextDecoration.lineThrough);
 
     _bottomSheet(
-      title: Text("Reservation Details",style: titleStyle,),
-          iconSize: iconSize,
-      child: Padding(
-        padding: const EdgeInsets.only(left:8.0,bottom: 8,right: 14),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(_selectedDates.first + " - " + _selectedDates.last,style: titleStyle,),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Column(
+        title: Text("Reservation Details",style: titleStyle,),
+        iconSize: iconSize,
+        child: Padding(
+          padding: const EdgeInsets.only(left:8.0,bottom: 8,right: 14),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(_selectedDates.first + " - " + _selectedDates.last,style: titleStyle,),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Column(
 
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(_selectedRoomType.title,style: secondaryStyle,),
-                          Text(_selectedAccommodationType.name,style: secondaryStyle,),
-                          Text("Edit",style: priceStyle.copyWith(decoration: TextDecoration.underline,color: Color(0xFF014895)),),
-
-                        ],
-                      ),
-                      Spacer(),
-                      Text(_selectedRooms.toString(),style: secondaryStyle,),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Rs. $totalPrice",style: totalStyle,),
-                            Text("Rs. $price",style: priceStyle,)
+                            Text(_selectedRoomType.title,style: secondaryStyle,),
+                            Text("Edit",style: priceStyle.copyWith(decoration: TextDecoration.underline,color: Color(0xFF014895)),),
+
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Rs. 800",style: totalStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5),),
-                      SizedBox(width: SizeConfig.blockSizeHorizontal,),
-                      Text("Rs. 900",style: priceStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4),),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text("2 Rooms| 5 Guests| 1 Night",style: titleStyle.copyWith(color: Color(0xFF646464)),),
-                          Text("View Reservation",style: secondaryStyle.copyWith(color: Color(0xFF014895,),decoration: TextDecoration.underline),),
-                        ],
-                      )),
-                      RaisedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HotelReservation(),
-                            ),
-                          );
-                        },
-                        color: unselectedColor,
-                        textColor: Colors.white,
-                        child: Text("Reserve"),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      )
+                        Spacer(),
+                        Text(_selectedRooms.toString(),style: secondaryStyle,),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text("Rs. $totalPrice",style: totalStyle,),
+                              Text("Rs. $price",style: priceStyle,)
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Rs. 800",style: totalStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5),),
+                        SizedBox(width: SizeConfig.blockSizeHorizontal,),
+                        Text("Rs. 900",style: priceStyle.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4),),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Expanded(child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text("2 Rooms| 5 Guests| 1 Night",style: titleStyle.copyWith(color: Color(0xFF646464)),),
+                            Text("View Reservation",style: secondaryStyle.copyWith(color: Color(0xFF014895,),decoration: TextDecoration.underline),),
+                          ],
+                        )),
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HotelReservation(),
+                              ),
+                            );
+                          },
+                          color: unselectedColor,
+                          textColor: Colors.white,
+                          child: Text("Reserve"),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        )
     );
   }
 }

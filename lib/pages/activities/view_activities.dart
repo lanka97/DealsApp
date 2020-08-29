@@ -167,7 +167,7 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
     return Padding(
       padding: const EdgeInsets.only(right: 2),
       child: Container(
-        width: SizeConfig.blockSizeHorizontal * 24,
+        width: SizeConfig.blockSizeHorizontal * 20,
         child: Card(
           color: color,
           child: Column(
@@ -227,11 +227,11 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockVertical * 3.5;
+    final topPosition = SizeConfig.safeBlockHorizontal * 3.5;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,
-      height: SizeConfig.blockSizeVertical * 32,
+      height: SizeConfig.blockSizeHorizontal * 45,
       child: Stack(
         children: <Widget>[
           Container(
@@ -499,44 +499,44 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
     final textTheme = Theme.of(context).textTheme;
     final redColor = Color(0xFFCC070B);
     final orangeColor = Color(0xFFF57C3F);
+    final greyColor = Color(0xFF8A98BA);
     final buttonTextStyle = textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 3.9);
     final selected = hotelRoom.title == _selectedRoomType?.title;
-
+    final secondaryStyle = textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8);
+    final newPriceStyle = textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.3,color: orangeColor);
+    final oldPriceStyle = textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.2,decoration: TextDecoration.lineThrough,color: greyColor);
     return Container(
       padding: const EdgeInsets.only(top: 10,bottom: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Text("Spend the Day Package",style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
+          Text("Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites. Facing the Sea, Sea-View, Lots of other options available in the deluxe suites",style: secondaryStyle,),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Container(
-                width: SizeConfig.blockSizeHorizontal * 20,
-                child: CachedNetworkImage(
-                  imageUrl: hotelRoom.image,
-                  fit: BoxFit.cover,
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0)
                 ),
-              ),
-              SizedBox(width: SizeConfig.blockSizeHorizontal * 2,),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(hotelRoom.title,style: textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontWeight: FontWeight.bold),),
-                    Text(hotelRoom.details,style: textTheme.bodyText2.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.8),),
-                  ],
-                ),
+                color: orangeColor,
+                child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
+                child: Text("20%",style: secondaryStyle.copyWith(color: Colors.white),),
+              ),),
+              SizedBox(width: SizeConfig.blockSizeHorizontal,),
+              Column(
+                children: <Widget>[
+                  Text("Rs. 800",style: newPriceStyle,),
+                  Text("Rs. 1000",style: oldPriceStyle),
+                ],
               )
             ],
           ),
-          ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-    padding: EdgeInsets.zero,
-    shrinkWrap: true,
-            itemCount: hotelRoom.roomPromotion.length,
-             itemBuilder: (BuildContext context, int index) => _roomPromotion(hotelRoom.roomPromotion[index]),
-          ),
+          SizedBox(height: SizeConfig.blockSizeHorizontal,),
           Container(
             width: double.infinity,
             child: RaisedButton(
@@ -631,7 +631,7 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
   _onSelectRoom(HotelRoom hotelRoom) {
     final iconSize = SizeConfig.blockSizeHorizontal * 4.5;
     final titleStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: iconSize);
-    final secondaryStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.5,color: Colors.white);
+    final secondaryStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Colors.white);
     final selectedColor = Color(0xFFF57C3F);
     final unselectedColor = Color(0xFFCC070B);
     final border = BorderSide(color: Colors.black);
@@ -650,7 +650,7 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: SizeConfig.blockSizeHorizontal * 14,
+              height: SizeConfig.blockSizeHorizontal * 12,
               alignment: Alignment.center,
               child: ListView.builder(
                 itemCount: hotelRoom.availableDates.length,
@@ -756,8 +756,10 @@ class _ViewActivitiesState extends State<ViewActivities> with SingleTickerProvid
                 },
                 color: unselectedColor,
                 disabledColor: unselectedColor.withOpacity(0.6),
-                child: Text("Add",style: secondaryStyle,),
-              ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Add",style: secondaryStyle,),
+                ),              ),
             ),
             SizedBox(height: SizeConfig.blockSizeHorizontal,),
           ],

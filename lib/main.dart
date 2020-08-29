@@ -15,18 +15,18 @@ import 'package:offpeak/utils/size_config.dart';
 import 'package:offpeak/pages/restaurants.dart';
 
 /// Only for [NormalPreview]
-void main() {
-  runApp(MyApp());
-}
+//void main() {
+//  runApp(MyApp());
+//}
 
 
 /// Only for [DevicePreview]
-//void main() => runApp(
-//  DevicePreview(
-//    enabled: !kReleaseMode,
-//    builder: (context) => MyApp(),
-//  ),
-//);
+void main() => runApp(
+  DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (context) => MyApp(),
+  ),
+);
 
 class MyApp extends StatelessWidget {
   @override

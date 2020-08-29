@@ -225,11 +225,11 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockVertical * 3.5;
+    final topPosition = SizeConfig.safeBlockHorizontal * 3.5;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,
-      height: SizeConfig.blockSizeVertical * 32,
+      height: SizeConfig.blockSizeHorizontal * 45,
       child: Stack(
         children: <Widget>[
           Container(
@@ -629,7 +629,7 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
   _onSelectRoom(HotelRoom hotelRoom) {
     final iconSize = SizeConfig.blockSizeHorizontal * 4.5;
     final titleStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: iconSize);
-    final secondaryStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.5,color: Colors.white);
+    final secondaryStyle = Theme.of(context).textTheme.headline6.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Colors.white);
     final selectedColor = Color(0xFFF57C3F);
     final unselectedColor = Color(0xFFCC070B);
     final border = BorderSide(color: Colors.black);
@@ -648,7 +648,7 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: SizeConfig.blockSizeHorizontal * 14,
+              height: SizeConfig.blockSizeHorizontal * 12,
               alignment: Alignment.center,
               child: ListView.builder(
                 itemCount: hotelRoom.availableDates.length,
@@ -669,7 +669,7 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
                       color: selected?selectedColor:unselectedColor,
                       child: Container(
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Text(text,style: secondaryStyle,)),
                     ),
                   );
@@ -733,7 +733,7 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
             Text("Accommodation Type",style: titleStyle,),
             SizedBox(height: SizeConfig.blockSizeHorizontal * 2,),
             Container(
-              height: SizeConfig.blockSizeHorizontal * 14,
+              height: SizeConfig.blockSizeHorizontal * 12,
               alignment: Alignment.center,
               child: ListView.builder(
                 itemCount: hotelRoom.roomPromotion.length,
@@ -783,7 +783,10 @@ class _ViewStaysState extends State<ViewStays> with SingleTickerProviderStateMix
                 },
                 color: unselectedColor,
                 disabledColor: unselectedColor.withOpacity(0.6),
-                child: Text("Add",style: secondaryStyle,),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Add",style: secondaryStyle,),
+                ),
               ),
             ),
             SizedBox(height: SizeConfig.blockSizeHorizontal,),
