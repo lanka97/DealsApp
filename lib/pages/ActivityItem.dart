@@ -37,7 +37,7 @@ class _ActivityItemState extends State<ActivityItem> {
                     borderRadius: BorderRadius.circular(8),
                     child: Image(
                       image: AssetImage(
-                        'assets/images/img.jpg',
+                        'assets/images/activities.jpg',
                       ),
                       width: SizeConfig.screenWidth * 0.98,
                       height: SizeConfig.screenHeight * 0.2,
