@@ -23,12 +23,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
           shadowColor: Colors.white,
           child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ViewRestaurant(),
-            ),
-          );
+          Navigator.pushNamed(context, ViewRestaurant.routeName);
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

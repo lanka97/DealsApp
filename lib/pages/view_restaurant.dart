@@ -6,6 +6,7 @@ import 'package:offpeak/models/restaurant.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/utils/size_config.dart';
 
+
 class ViewRestaurant extends StatefulWidget {
   static const routeName = "view_restaurant";
   @override
@@ -71,7 +72,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
         children: <Widget>[
           Row(
               children: <Widget>[
-                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 5.5, fontFamily: _fontName),)),
+                Expanded(child: Text(_restaurant.name,style: textTheme.headline6.copyWith(fontWeight: FontWeight.w900, color: Color(0xFF000000), fontSize: SizeConfig.blockSizeHorizontal * 5, fontFamily: _fontName),)),
               ],
             ),
           SizedBox(height: SizeConfig.blockSizeVertical,),
@@ -84,14 +85,14 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                     TextSpan(
                       text:
                       'Colombo 1',
-                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.5,color: Color(0xFF4a4c4f)),
                     ),
                     TextSpan(
                         text: '  |  ',
-                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),),
+                      style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.5,color: Color(0xFF4a4c4f)),),
                     TextSpan(
                       text: 'Rs 1000 for 2 ',
-                        style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),
+                        style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.5,color: Color(0xFF4a4c4f)),
                     ),
                   ],
                 ),
@@ -102,8 +103,8 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
               Text("(${_restaurant.voteCount})",style: TextStyle(color: blueGrey,fontFamily: _fontName),),
             ],
           ),
-          SizedBox(height: SizeConfig.blockSizeVertical * 0.5,),
-          Text(_restaurant.categories.join(" | "),style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 4,color: Color(0xFF000000)),),
+          SizedBox(height: SizeConfig.blockSizeVertical * 0.2,),
+          Text(_restaurant.categories.join(" | "),style: textTheme.headline4.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 3.5,color: Color(0xFF4a4c4f)),),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Container(
             height: SizeConfig.blockSizeHorizontal * 13,
@@ -175,15 +176,15 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     return Padding(
               padding: const EdgeInsets.only(right: 2),
               child: Container(
-                width: SizeConfig.blockSizeHorizontal * 24,
+                width: SizeConfig.blockSizeHorizontal * 20,
                 child: Card(
                   color: color,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 3.5,fontFamily: _fontName),),
-                      Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4.5,fontFamily: _fontName, fontWeight: FontWeight.bold),),
+                      Text(promotion.time,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 3.0,fontFamily: _fontName),),
+                      Text(promotion.percentage,style: textTheme.headline6.copyWith(color: Colors.white,fontSize: SizeConfig.blockSizeHorizontal * 4.0,fontFamily: _fontName, fontWeight: FontWeight.bold),),
                     ],
                   ),
                 ),
@@ -236,7 +237,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
       height: SizeConfig.screenHeight * 0.055,
       child: FlatButton(
         padding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.blockSizeHorizontal * 20.0),
+            horizontal: SizeConfig.blockSizeHorizontal * 10.0),
         onPressed: () {
           Navigator.push(
             context,
@@ -264,7 +265,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: SizeConfig.blockSizeHorizontal * 5.5),
+                      fontSize: SizeConfig.blockSizeHorizontal * 4.5),
                 )
               ],
             ),
@@ -276,11 +277,11 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
 
 
   Widget _topImage(){
-    final topPosition = SizeConfig.safeBlockVertical * 3.5;
+    final topPosition = SizeConfig.safeBlockVertical * 3;
     final iconSize = 20.0;
     return Container(
       width: double.infinity,
-      height: SizeConfig.blockSizeVertical * 32,
+      height: SizeConfig.blockSizeHorizontal * 45,
       child: Stack(
         children: <Widget>[
           Container(
@@ -389,8 +390,9 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
   Widget _firstTabView(){
     final textTheme = Theme.of(context).textTheme;
     final restaurantMenuList =_restaurant.restaurantMenuList;
-    final menuTextSize = SizeConfig.blockSizeHorizontal * 3.7;
-    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.normal,fontSize: SizeConfig.blockSizeHorizontal * 4);
+    final menuTextSize = SizeConfig.blockSizeHorizontal * 3.5;
+    final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.normal,fontSize: SizeConfig.blockSizeHorizontal * 3.5);
+    final headlineTextTheme = normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 5,fontWeight: FontWeight.w900,color: Color(0xFF014895),fontFamily: _fontName);
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -475,7 +477,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.noteTwo,style: normalTextTheme,),
           SizedBox(height: SizeConfig.blockSizeVertical,),
-          Text("Special Conditions",style: normalTextTheme.copyWith(fontSize: SizeConfig.blockSizeHorizontal * 6,fontWeight: FontWeight.w900,color: Color(0xFF000000),fontFamily: _fontName),),
+          Text("Special Conditions",style: headlineTextTheme,),
           SizedBox(height: SizeConfig.blockSizeVertical,),
           Text(_restaurant.specialCondition,style: normalTextTheme,),
         ],
@@ -486,7 +488,7 @@ class _ViewRestaurantState extends State<ViewRestaurant> with SingleTickerProvid
     final textTheme = Theme.of(context).textTheme;
     final normalTextSize =SizeConfig.blockSizeHorizontal * 4;
     final normalTextTheme = textTheme.headline6.copyWith(fontWeight: FontWeight.normal,fontSize: normalTextSize);
-    final titleTextTheme = normalTextTheme.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 6,color: Color(0xFF4A4B71));
+    final titleTextTheme = normalTextTheme.copyWith(fontWeight: FontWeight.w900,fontSize: SizeConfig.blockSizeHorizontal * 5,color: Color(0xFF4A4B71));
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
