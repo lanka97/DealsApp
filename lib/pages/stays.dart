@@ -25,23 +25,35 @@ class _StaysState extends State<Stays> {
     restaurant.add(res);
 
     return Scaffold(
-//        appBar: AppBar(
-//          elevation: 0.0,
-//          backgroundColor: Colors.white,
-////          leading: IconButton(
-////            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-////            onPressed: () => Navigator.of(context).pop(),
-////          ),
-//          title: Text(
-//              "",
-//              style: TextStyle(
-//                fontWeight: FontWeight.bold,
-//                color: Colors.black,
-//
-//              )
-//          ),
-//          centerTitle: false,
-//        ),
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                  "Matara",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+
+                  )
+              ),
+              Text(
+                  "Night 5, 2 Guests",
+                  style: TextStyle(
+                    color: Colors.black,
+
+                  )
+              ),
+            ],
+          ),
+          centerTitle: false,
+        ),
       backgroundColor: Colors.white,
 
       body: SafeArea(
@@ -53,15 +65,36 @@ class _StaysState extends State<Stays> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(13.0,10.0,10.0,5.0),
-                  child: Text("Stays",
-                      style: TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal * 9,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  padding: const EdgeInsets.fromLTRB(13.0,0.0,10.0,0),
+                  child: Column(
+                    children: [
+                      Divider(
+                        thickness: 2,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Stays",
+                              style: TextStyle(
+                                  fontSize: SizeConfig.blockSizeHorizontal * 5,
+                                  height: 1
+                              )),
+                          Text("Night 5, 2 Guests",
+                              style: TextStyle(
+                                  fontSize: SizeConfig.blockSizeHorizontal * 5,
+                                  height: 1
+                              )),
+
+                        ],
+                      ),
+                      Divider(
+                        thickness: 2,
+                      )
+                    ],
+                  ),
                 ),
                 Container(
-                  height: SizeConfig.screenHeight * 0.88,
+                  height: SizeConfig.screenHeight * 0.83,
                   child: ListView.builder(
 //                        scrollDirection: Axis.horizontal,
 //                        physics: Scrollable(),
