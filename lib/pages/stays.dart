@@ -35,17 +35,21 @@ class _StaysState extends State<Stays> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                  "Matara",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+              Expanded(
+                child: Text(
+                    "Matara",
+                    style: TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal * 5,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
 
-                  )
+                    )
+                ),
               ),
               Text(
                   "Night 5, 2 Guests",
                   style: TextStyle(
+                    fontSize: SizeConfig.blockSizeHorizontal * 5,
                     color: Colors.black,
 
                   )
@@ -93,11 +97,9 @@ class _StaysState extends State<Stays> {
                     ],
                   ),
                 ),
-                Container(
-                  height: SizeConfig.screenHeight * 0.83,
+                Expanded(
                   child: ListView.builder(
 //                        scrollDirection: Axis.horizontal,
-//                        physics: Scrollable(),
                       itemCount: 15,
                       itemBuilder: (context, index) {
                         return StaysItem();
