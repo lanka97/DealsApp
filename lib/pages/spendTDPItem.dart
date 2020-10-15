@@ -1,18 +1,14 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
 
-class ActivityItem extends StatefulWidget {
+class SpendTDPItem extends StatefulWidget {
   @override
-  _ActivityItemState createState() => _ActivityItemState();
+  _SpendTDPItemState createState() => _SpendTDPItemState();
 }
 
-class _ActivityItemState extends State<ActivityItem> {
-  bool _favourite = false;
-
+class _SpendTDPItemState extends State<SpendTDPItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -145,7 +141,7 @@ class _ActivityItemState extends State<ActivityItem> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
                   child: Text(
-                    "Starting From Rs. 5000.00 p/p onwards",
+                    "Starting From Rs. 5000.00 p/p",
                     style: TextStyle(
                       fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                       color: Color(0xFF4a4c4f),
@@ -158,84 +154,5 @@ class _ActivityItemState extends State<ActivityItem> {
             ),
           )),
     );
-  }
-
-  Widget _buildList() {
-//    if (false)
-//      return Center(
-//        child: Column(
-//          mainAxisSize: MainAxisSize.min,
-//          children: <Widget>[
-//            Icon(Icons.local_movies),
-//            Text(
-//              "We cannot find any movies",
-//              style: Theme.of(context).textTheme.headline6,
-//            ),
-//          ],
-//        ),
-//      );
-//    return Padding(
-//      padding: const EdgeInsets.all(8.0),
-//      child: Container(
-//        height: SizeConfig.screenHeight*0.05,
-//        width: SizeConfig.screenWidth*0.98,
-//        child: ListView.builder(
-//            scrollDirection: Axis.horizontal,
-//            itemCount: 5,
-//            itemBuilder: (context, index) {
-//              return Container(
-//                child: Text("ffff"),
-//                decoration: BoxDecoration(
-//                  borderRadius: BorderRadius.circular(100),
-//                  color: Colors.red,
-//                ),
-//              );
-//        }),
-//      ),
-//    );
-
-    return Container(
-      height: SizeConfig.screenWidth * 0.12,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 15,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 2, left: 2, bottom: 3),
-              child: Container(
-                height: SizeConfig.screenWidth * 0.05,
-                width: SizeConfig.screenWidth * 0.2,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.red[700],
-                ),
-                child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("21 Jul",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: SizeConfig.blockSizeHorizontal * 4)),
-                        Text("20%",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: SizeConfig.blockSizeHorizontal * 5,
-                                height: 1,
-                                fontWeight: FontWeight.bold))
-                      ],
-                    )),
-              ),
-            );
-          }),
-    );
-  }
-
-  Future _addToFavourite() async {
-    bool fav = !_favourite;
-
-    setState(() {
-      _favourite = fav;
-    });
   }
 }

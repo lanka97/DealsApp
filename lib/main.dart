@@ -1,9 +1,11 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:offpeak/pages/activities.dart';
 import 'package:offpeak/pages/reservation.dart';
 import 'package:offpeak/pages/scan.dart';
 import 'package:offpeak/pages/spas.dart';
+import 'package:offpeak/pages/spendTDP.dart';
 import 'package:offpeak/pages/stays.dart';
 import 'package:offpeak/pages/view_restaurant.dart';
 import 'package:offpeak/utils/size_config.dart';
@@ -56,6 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Stays();
+    return SpendTDP();
   }
 }
